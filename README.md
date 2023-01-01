@@ -39,6 +39,7 @@
 
 - **REWARD**
 - A reward Rt is a scalar feedback signal
+  - Ultmately you have to pick an anction among the action , you have to weights the situation so it alwayas a conversion into a scalar view
 - Basically a number, sum the rewards 
 - Indicates how well agent is doing at step t
 - The agent's job is to maximise cumulative reward
@@ -97,12 +98,238 @@ cumulative reward
     - reward signal tells that how good is the descion
 
     - ![wordloop](https://user-images.githubusercontent.com/36159918/210171876-587b2455-47a9-41ce-87f1-e07cc3b38c9b.PNG)
-    - The enviroment is world , we have m
+    - The enviroment is world , agent is interacting with the world
+    - Enviroment is genrating the obeservation and reward
+    - we dont have any control on the eenviroment except on the action
 
 
-   
+## History and State
+- The history is the sequence of observations, actions, rewards
+   - History is that what agent has seen so far
+   - ht =  history, A = Action , O = Observation, R = Reward
+  - Ht = O1; R1;A1; :::;At􀀀1;Ot ; Rt t = time step
+- i.e. all observable variables up to time t
+  -  remember we trying to build a brain
+- i.e. the sensorimotor stream of a robot or embodied agent
+- What happens next depends on the history:
+  - The agent selects actions
+  - enviroments looks what is recived 
+  - The environment selects observations/rewards
+  - its not very usefull beacuse we deal into nano seconds
+- State is the information used to determine what happens next
+- Formally, state is a function of the history:
+    - St = f (Ht )
+    - look at last four observation for example
 
+- There are three definations of the state
+
+**Environment State**
+
+- ![Enviroment state](https://user-images.githubusercontent.com/36159918/210174720-864d253a-33af-4e9d-bccb-fa0d33272ff7.PNG)
+- The environment state Se t is the environment's private representation.
+ - for eg atari game
+- i.e. whatever data the environment uses to pick the next observation/reward
+- The environment state is not usually visible to the agent
+-  algorithm does not see the enviroment , its only see the observation the numbers 
+- Even if Se t is visible, it may contain irrelevant information
+
+
+
+**Agent State**
+- ![agent state](https://user-images.githubusercontent.com/36159918/210174965-854d0e3f-132f-4010-947b-8d16bd39752a.PNG)
+- agent is a set of numbers which are in the algorithm 
+- The agent state Sa t is the agent's internal representation
+- That's a really goal how to pick pur agent
+- i.e. whatever information the agent uses to pick the next action
+- i.e. it is the information used by reinforcement learning algorithms
+- It can be any function of
+history:
+- Sa t = f (Ht )
+
+ **Information State**
+ - An information state (a.k.a. Markov state) contains all useful information from the history.
+ - Defination A state St is Markov if and only if
+    P[St+1 j St ] = P[St+1 j S1; :::; St ]
+     - The probablity of the next state( P[St+1) condition on a state you are in (St) is the same as the probablity of next sate(P[St+1 ) if you show all the previous states (S1; :::; St ]) to the system 
+ - \The future is independent of the past given the present"
+    - H1:t ! St ! Ht+1:1
+ - Once the state is known, the history may be thrown away
+ - you can throw all the previous states and you can go with the current state every thing will be fine
+ - i.e. The state is a suf cient statistic of the future
+ - The environment state Se
+ - t is Markov
+ - The history Ht is Markov
+
+- For example in the Helicopeter example . The angular velocity the speed can be a morkov state it doesnot matter what was the condition 10 mints before. the current markov state would be enough to make a next descion 
+- In contrast if you have non markov state/imperfect you just have the position not the velocity now the where is helicopter is not fully determenid now you have to look back in time what its velocity is.
+
+**Example**
+![Rat Example](https://user-images.githubusercontent.com/36159918/210175698-3968c71e-1173-423c-ab17-585b12e035c0.PNG)
+- The next thing that would happen really depen on our representation.
  
+ **Fully Observable Environments**
+ -![Full Obseravalbe](https://user-images.githubusercontent.com/36159918/210175753-3c658380-2b65-4a35-b507-52eef9b275ab.PNG)
+ - Full observability: agent directly observes environment state Ot = Sa t = Se
+   -  This is a nice and best case
+   -  The observation is the same as the enviroment state and as the agent state
+ - Agent state = environment state = information state
+ - Formally, this is a Markov decision process (MDP)
+ 
+ **Partially Observable Environments**
+
+ - Partial observability: agent indirectly observes environment:
+  - it doesnt get to see every thing in the enviroment
+  - A robot with camera vision isn't told its absolute location
+  - A trading agent only observes current prices
+  - A poker playing agent only observes public cards
+ - Now agent state ! = environment state
+ - Formally this is a partially observable Markov decision process (POMDP)
+ - Agent must construct its own state representation Sat , e.g.
+ - How we can build that state so we can do the foloowing things
+  - Complete history: Sat = Ht (Remembering every thing)
+  - Beliefs of environment state: Sa (prbalistic and bassyian approach)  t = (P[Se t = s1]; :::; P[Se t = sn])
+  - Recurrent neural network: Sa t = (Sa t􀀀1Ws + OtWo) (linera transforamtion from one state to new state and do some non linearities)
+  
+  ## Major Components of an RL Agent
+  - An RL agent may include one or more of these components:
+     - Policy: agent's behaviour function
+       - How the agents picks his actions
+     - Value function: how good is each state and/or action
+       - How good it is to taka particular action, how good is the reward
+     - Model: agent's representation of the environment
+       - How the agent thinks teh enviroment works
+  **Policy**
+  - A policy is the agent's behaviour
+  - It is a map from state to action, e.g.
+  - Deterministic policy: a = Pie(s)
+    - we trying to maek a brain which figures out this policy
+  - Stochastic policy: pie(ajs) = P[At = ajSt = s]
+
+**Value Function**
+- Value function is a prediction of future reward 
+  - if we have two states and we want to choose one state we will chooese on the expected future reward amount 
+- Used to evaluate the goodness/badness of states
+- And therefore to select between actions, e.g.
+ vpie(s) = Epie * [Rt+1 +  Rt+2 +  2Rt+3 + ::: j St = s]
+    
+**Model**
+- A model predicts what the environment will do next
+- P predicts the next state
+- R predicts the next (immediate) reward, e.g.
+ - Pa ss0 = P[St+1 = s0 j St = s; At = a]
+ - Ras = E[Rt+1 j St = s; At = a]
+- Its not necessaryto build the enviroment
+
+
+**Maze Example**
+- ![Maze Example](https://user-images.githubusercontent.com/36159918/210176786-a26e1d38-e110-435f-9be6-120a0c5d47a0.PNG)
+- Rewards: -1 per time-step
+- Actions: N, E, S, W (North , East South , West)
+- States: Agent's location
+
+**Maze Example policy**
+- ![MazeExamplePolicy](https://user-images.githubusercontent.com/36159918/210176846-9a5148e3-77bf-42a6-911a-9c3dd9fa727c.PNG)
+- Arrows represent policy (s) for each state s
+- What the agent want to choose if he is in any on of the state
+- Example of the deterministic policy function
+- On  you have mapping you can read out and behave
+
+
+**Maze Example: Value Function**
+- ![MazeVaue function](https://user-images.githubusercontent.com/36159918/210176933-f24aefca-9160-49f2-935b-2a8ad273a95f.PNG)
+- -1 states that we are one step behin reaching to our goal
+- -2 states that we are two steps behind to reach our goal
+- -24 state thatwe are in the wrong direction
 
 
 
+**Maze Example Model**
+
+- ![MazeModelvalue](https://user-images.githubusercontent.com/36159918/210177066-d20442d6-fc3b-4190-a607-f2a41dacbcf1.PNG)
+- Trying to figure out what happens in the enviroment
+- map represents that what are the dynamics of the the enviromenmt.
+- agent model reality
+ 
+##Categorizing RL agents
+- Value Based
+ - No Policy (Implicit) (just focous on the value)
+ - Value Function
+- Policy Based
+ - Policy (focous on policy example teh arrows most possible awards)
+ - No Value Function
+- Actor Critic
+ - Policy
+ - Value Function
+- Model Free
+ - Policy and/or Value Function (we don not try to understand the enviroments , we dont try to build dynamics of how helicopter moves instead we see the experince    and figure out the policy through award )
+ - No Model  
+- Model Based
+ - Policy and/or Value Function
+ - Model (First we made the dynamics of the model and )
+
+The model and model free are the  fundamental distinguish type in RL
+
+## Rl agent taxonmy
+
+
+![Rl agent taxonmy](https://user-images.githubusercontent.com/36159918/210177392-023c4b14-58fc-4e2d-bf61-963a61fc5399.PNG)
+
+
+
+## problems within RL
+- Two fundamental problems in sequential decision making
+- Reinforcement Learning:
+  - The environment is initially unknown (Dont tell any thing about env, Eg robot knows by itself)
+  - The agent interacts with the environment
+  - The agent improves its policy
+- Planning:
+ - A model of the environment is known(we tell the details )
+ - The agent performs computations with its model (without anyexternal interaction)
+ - The agent improves its policy a.k.a. deliberation, reasoning, introspection, pondering, thought, search 
+
+- These two things are linked two gather
+
+**Atari Example Rl*
+
+- ![Atari Example](https://user-images.githubusercontent.com/36159918/210178345-dd55c66f-6c8f-46c3-b73e-816cf8b1eeae.PNG)
+- ![atari planing](https://user-images.githubusercontent.com/36159918/210178363-cdeef36b-d55b-4a79-8c2a-aa780fa6ca6b.PNG)
+
+
+## Exploration and Exploitation
+- Reinforcement learning is like trial-and-error learning
+- The agent should discover a good policy
+- From its experiences of the environment
+-  Without losing too much reward along the way
+-  Exploration finds more information about the environment
+- Exploitation exploits known information to maximise reward
+- It is usually important to explore as well as exploit
+
+## Examples
+- Restaurant Selection
+  - Exploitation Go to your favourite restaurant
+  - Exploration Try a new restaurant
+- Online Banner Advertisements
+  - Show the most successful advert
+  - Show a different advert
+- Oil Drilling
+  - Exploitation Drill at the best known location
+  - Exploration Drill at a new location
+- Game Playing
+ - Exploitation Play the move you believe is best
+ - Exploration Play an experimental move
+
+
+## Prediction and Control
+- Prediction: evaluate the future (How much reward I will get)
+ - Given a policy
+- Control: optimise the future
+ - Find the best policy (Have to evaluate all policy before takeing one)
+
+**Gridword Predicton  Example**
+- ![Gridword PRediction](https://user-images.githubusercontent.com/36159918/210178235-52c9d9e6-522d-402c-a0a1-f7a2aea268ab.PNG)
+
+
+**Grid Word Control Example**
+![GridwordControl](https://user-images.githubusercontent.com/36159918/210178297-dc4470e9-2688-4917-b133-08fc4bdb9765.PNG)
+
+- 
