@@ -11,6 +11,10 @@
 - In psychology the study of classical/operant conditioning which is   about how animal behaviour when we gave some rewards. Its also underline in the RL
 -  In mathamatics the study which is named as Operations Research , which focous on the study of optimal control.
 - In  Economics the study of game theory/ utility theory and bounded rationality which focous on how and why people made descions if they want to optimise there utility.
-- 
+- Branches of Machine Learning
+- ![Branches](https://user-images.githubusercontent.com/36159918/210170187-c099fe93-7088-48f4-9e8f-2f88c92b6db2.PNG)
+
+
+## Charchteristics of Rienforcment learning.
 
 
