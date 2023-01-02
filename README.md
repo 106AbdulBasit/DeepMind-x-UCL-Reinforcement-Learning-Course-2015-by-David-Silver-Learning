@@ -1,4 +1,20 @@
-# RL-Course-by-David-Silver
+# Lecture 1: Introduction to Reinforcement Learning
+  - Course outline
+  - 1 Admin
+  - 2 About Reinforcement Learning
+      - [About RL](#aboutrl)
+      - [Branches of Machine Learninh](#branches)
+      - [Charchteristics of Rienforcment learning](#charcter)
+      - [Examples of RL](#examplesofrL)
+  - 3 The Reinforcement Learning Problem
+      - [RL Problem](#rlprob)
+      - [Rewards](#reward)
+      - [Example of Rewards](exampleofre)
+  - 4 Inside An RL Agent
+  - 5 Problems within Reinforcement Learning
+
+<a id="aboutrl"></a>
+# About RL
 - look at the above picture
 - ![Many Faces](https://user-images.githubusercontent.com/36159918/210170118-1707880a-3111-447d-8309-744fa3824234.PNG)
 - Reinforcement Learning is  set of Intersection of many different science.
@@ -11,11 +27,13 @@
 - In psychology the study of classical/operant conditioning which is   about how animal behaviour when we gave some rewards. Its also underline in the RL
 -  In mathamatics the study which is named as Operations Research , which focous on the study of optimal control.
 - In  Economics the study of game theory/ utility theory and bounded rationality which focous on how and why people made descions if they want to optimise there utility.
-- Branches of Machine Learning
+<a id="branches"></a>
+
+ # Branches of Machine Learning
 - ![Branches](https://user-images.githubusercontent.com/36159918/210170187-c099fe93-7088-48f4-9e8f-2f88c92b6db2.PNG)
 
-
-## Charchteristics of Rienforcment learning.
+<a id="charcter"></a>
+# Charchteristics of Rienforcment learning.
 
 - Few things that differentaiate supervise learning and unsupervise learning from RL
 - There is no supervisor , only a reward signal
@@ -25,7 +43,9 @@
 -  Agent's actions aect the subsequent data it receives
 -  agent infuence on the data , active learning process
 
-## Examples of Reinforcement learning
+<a id="examplesofrl"></a>
+
+# Examples of Reinforcement learning
 - Fly stunt manoeuvers in a helicopter
 - defeat the world champion at backgammon
 - Manage the investment portfolio
@@ -34,10 +54,11 @@
 - Play many different Atari games better than humans
 -  Rougly takes 3, 4 days to train per game on GPU in order to achive human level performance
 
+<a id = "rlprob"></a>
+# The RL Problem
 
-## The RL Problem
-
-- **REWARD**
+<a id = "reward"></a>
+# REWARD
 - A reward Rt is a scalar feedback signal
   - Ultmately you have to pick an anction among the action , you have to weights the situation so it alwayas a conversion into a scalar view
 - Basically a number, sum the rewards 
@@ -51,8 +72,8 @@ cumulative reward
   - at the termination of the episode at the end when you actually achive your goal you stop and now its a well defined objective to maximize the cummilative award  basically the minimis the time to reach its goal
 
 
-
-## Examples of Rewards
+<a id = "exampleofre"></a>
+# Examples of Rewards
 
 - Fly stunt manoeuvres in a helicopter
   - +ve reward for following desired trajectory
@@ -71,9 +92,9 @@ cumulative reward
   - +=􀀀ve reward for increasing/decreasing score
 - How to make a uniform framework for these kind of tasks uning RL
 
+<a id = "sd"></a>
 
-
-## Sequential Decision Making
+# Sequential Decision Making
  - Goal: select actions to maximise total future reward
     - Goal unify them based on reward
  - Actions may have long term consequences
@@ -87,8 +108,8 @@ cumulative reward
   - Blocking opponent moves (might help winning chances many
     moves from now)
     
-    
-    ## Agents and Enviroment
+    <a id = "agentsandenv"></a>
+    # Agents and Enviroment
     - ![Agents and enviroment](https://user-images.githubusercontent.com/36159918/210171726-370e179d-cbeb-41a0-9140-ead050e3f888.PNG) 
     - Big Brain represent the agent
     - The agent will be responsible for the actions
@@ -102,8 +123,8 @@ cumulative reward
     - Enviroment is genrating the obeservation and reward
     - we dont have any control on the eenviroment except on the action
 
-
-## History and State
+<a id = "hns"></a>
+# History and State
 - The history is the sequence of observations, actions, rewards
    - History is that what agent has seen so far
    - ht =  history, A = Action , O = Observation, R = Reward
@@ -122,8 +143,9 @@ cumulative reward
     - look at last four observation for example
 
 - There are three definations of the state
+<a id = "enviromentstate"></a>
 
-**Environment State**
+# Environment State
 
 - ![Enviroment state](https://user-images.githubusercontent.com/36159918/210174720-864d253a-33af-4e9d-bccb-fa0d33272ff7.PNG)
 - The environment state Se t is the environment's private representation.
@@ -134,8 +156,8 @@ cumulative reward
 - Even if Se t is visible, it may contain irrelevant information
 
 
-
-**Agent State**
+<a id = "agentstate"></a>
+# Agent State
 - ![agent state](https://user-images.githubusercontent.com/36159918/210174965-854d0e3f-132f-4010-947b-8d16bd39752a.PNG)
 - agent is a set of numbers which are in the algorithm 
 - The agent state Sa t is the agent's internal representation
@@ -146,7 +168,9 @@ cumulative reward
 history:
 - Sa t = f (Ht )
 
- **Information State**
+<a id = "infostate"></a>
+
+# Information State
  - An information state (a.k.a. Markov state) contains all useful information from the history.
  - Defination A state St is Markov if and only if
     P[St+1 j St ] = P[St+1 j S1; :::; St ]
@@ -163,11 +187,14 @@ history:
 - For example in the Helicopeter example . The angular velocity the speed can be a morkov state it doesnot matter what was the condition 10 mints before. the current markov state would be enough to make a next descion 
 - In contrast if you have non markov state/imperfect you just have the position not the velocity now the where is helicopter is not fully determenid now you have to look back in time what its velocity is.
 
-**Example**
+<a id = "example"></a>
+## Example
 ![Rat Example](https://user-images.githubusercontent.com/36159918/210175698-3968c71e-1173-423c-ab17-585b12e035c0.PNG)
 - The next thing that would happen really depen on our representation.
  
- **Fully Observable Environments**
+ <a id = "fullyobserve"></a>
+ 
+ # Fully Observable Environments
  -![Full Obseravalbe](https://user-images.githubusercontent.com/36159918/210175753-3c658380-2b65-4a35-b507-52eef9b275ab.PNG)
  - Full observability: agent directly observes environment state Ot = Sa t = Se
    -  This is a nice and best case
@@ -175,7 +202,8 @@ history:
  - Agent state = environment state = information state
  - Formally, this is a Markov decision process (MDP)
  
- **Partially Observable Environments**
+ <a id = "partiallyobserve"></a>
+ # Partially Observable Environments
 
  - Partial observability: agent indirectly observes environment:
   - it doesnt get to see every thing in the enviroment
@@ -190,7 +218,10 @@ history:
   - Beliefs of environment state: Sa (prbalistic and bassyian approach)  t = (P[Se t = s1]; :::; P[Se t = sn])
   - Recurrent neural network: Sa t = (Sa t􀀀1Ws + OtWo) (linera transforamtion from one state to new state and do some non linearities)
   
-  ## Major Components of an RL Agent
+  
+  <a id = "majorcomponetinrl"></a>
+  
+  # Major Components of an RL Agent
   - An RL agent may include one or more of these components:
      - Policy: agent's behaviour function
        - How the agents picks his actions
@@ -198,21 +229,26 @@ history:
        - How good it is to taka particular action, how good is the reward
      - Model: agent's representation of the environment
        - How the agent thinks teh enviroment works
-  **Policy**
+  
+  <a id = "policy"></a>
+  # Policy
   - A policy is the agent's behaviour
   - It is a map from state to action, e.g.
   - Deterministic policy: a = Pie(s)
     - we trying to maek a brain which figures out this policy
   - Stochastic policy: pie(ajs) = P[At = ajSt = s]
 
-**Value Function**
+<a id = "valuefunct"></a>
+# Value Function
 - Value function is a prediction of future reward 
   - if we have two states and we want to choose one state we will chooese on the expected future reward amount 
 - Used to evaluate the goodness/badness of states
 - And therefore to select between actions, e.g.
  vpie(s) = Epie * [Rt+1 +  Rt+2 +  2Rt+3 + ::: j St = s]
-    
-**Model**
+  
+ <a id = "Model"></a>
+ 
+# Model
 - A model predicts what the environment will do next
 - P predicts the next state
 - R predicts the next (immediate) reward, e.g.
@@ -220,7 +256,8 @@ history:
  - Ras = E[Rt+1 j St = s; At = a]
 - Its not necessaryto build the enviroment
 
-
+<a id = "examplesofmaze"></a>
+# Example of Model
 **Maze Example**
 - ![Maze Example](https://user-images.githubusercontent.com/36159918/210176786-a26e1d38-e110-435f-9be6-120a0c5d47a0.PNG)
 - Rewards: -1 per time-step
@@ -249,8 +286,10 @@ history:
 - Trying to figure out what happens in the enviroment
 - map represents that what are the dynamics of the the enviromenmt.
 - agent model reality
+
+<a id = "catgorizingrl"></a>
  
-##Categorizing RL agents
+#Categorizing RL agents
 - Value Based
  - No Policy (Implicit) (just focous on the value)
  - Value Function
@@ -275,8 +314,8 @@ The model and model free are the  fundamental distinguish type in RL
 ![Rl agent taxonmy](https://user-images.githubusercontent.com/36159918/210177392-023c4b14-58fc-4e2d-bf61-963a61fc5399.PNG)
 
 
-
-## problems within RL
+<a id = "problems in RL"></a>
+# problems within RL
 - Two fundamental problems in sequential decision making
 - Reinforcement Learning:
   - The environment is initially unknown (Dont tell any thing about env, Eg robot knows by itself)
@@ -294,8 +333,8 @@ The model and model free are the  fundamental distinguish type in RL
 - ![Atari Example](https://user-images.githubusercontent.com/36159918/210178345-dd55c66f-6c8f-46c3-b73e-816cf8b1eeae.PNG)
 - ![atari planing](https://user-images.githubusercontent.com/36159918/210178363-cdeef36b-d55b-4a79-8c2a-aa780fa6ca6b.PNG)
 
-
-## Exploration and Exploitation
+<a id = "expexp"></a>
+# Exploration and Exploitation
 - Reinforcement learning is like trial-and-error learning
 - The agent should discover a good policy
 - From its experiences of the environment
@@ -318,8 +357,8 @@ The model and model free are the  fundamental distinguish type in RL
  - Exploitation Play the move you believe is best
  - Exploration Play an experimental move
 
-
-## Prediction and Control
+<a id = "pandc"></a>
+# Prediction and Control
 - Prediction: evaluate the future (How much reward I will get)
  - Given a policy
 - Control: optimise the future
@@ -333,3 +372,10 @@ The model and model free are the  fundamental distinguish type in RL
 ![GridwordControl](https://user-images.githubusercontent.com/36159918/210178297-dc4470e9-2688-4917-b133-08fc4bdb9765.PNG)
 
 - 
+
+
+# Lecture 2  Markov Decision Process
+
+
+
+
