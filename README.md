@@ -30,6 +30,13 @@
       - [Exploration and Exploitation](#expexp)
       - [Prediction and Control](#pandc)
       
+  # Lecture 2: Markov Decision Processes
+    - 1 Markov Processes
+    - 2 Markov Reward Processes
+    - 3 Markov Decision Processes
+    - 4 Extensions to MDPs
+  
+      
 
 <a id="aboutrl"></a>
 # About RL
@@ -394,6 +401,17 @@ The model and model free are the  fundamental distinguish type in RL
 
 # Lecture 2  Markov Decision Process
 
+# Introduction to MDPs
+
+- Markov decision processes formally describe an environment
+- for reinforcement learning
+- Where the environment is fully observable
+- i.e. The current state completely characterises the process
+- Almost all RL problems can be formalised as MDPs, e.g.
+  - Optimal control primarily deals with continuous MDPs
+  - Partially observable problems can be converted into MDPs
+  - Bandits are MDPs with one state
+  
 
 
 
