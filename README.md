@@ -9,9 +9,28 @@
   - 3 The Reinforcement Learning Problem
       - [RL Problem](#rlprob)
       - [Rewards](#reward)
-      - [Example of Rewards](exampleofre)
+      - [Example of Rewards](#exampleofre)
+      - [Sequential Decision Making](#sd)
+      - [Agents and Enviroment](#agentsandenv)
+      - [History and State](#hns)
+      - [ Environment State](#nviromentstate)
+      - [Agent State](#agentstate)
+      - [Information State](#infostate)
+      - [Fully Observable Environments(#fullyobserve)
+      -[ Partially Observable Environments](#partiallyobserve)
+     
   - 4 Inside An RL Agent
+      -[ Major Components of an RL Agent](#majorcomponetinrl)
+      -[Policy](#policy)
+      -[Value Function](#valuefunct)
+      -[Model](#model)
+      -[ Example of Model](#examplesofmaze)
+      -[Categorizing RL agents](#catgorizingrl)  
   - 5 Problems within Reinforcement Learning
+      -[problems within RL](#problemsinRL)
+      -[Exploration and Exploitation](#expexp)
+      -[Prediction and Control](#pandc)
+      
 
 <a id="aboutrl"></a>
 # About RL
@@ -246,7 +265,7 @@ history:
 - And therefore to select between actions, e.g.
  vpie(s) = Epie * [Rt+1 +  Rt+2 +  2Rt+3 + ::: j St = s]
   
- <a id = "Model"></a>
+ <a id = "model"></a>
  
 # Model
 - A model predicts what the environment will do next
@@ -314,7 +333,7 @@ The model and model free are the  fundamental distinguish type in RL
 ![Rl agent taxonmy](https://user-images.githubusercontent.com/36159918/210177392-023c4b14-58fc-4e2d-bf61-963a61fc5399.PNG)
 
 
-<a id = "problems in RL"></a>
+<a id = "problemsinrl"></a>
 # problems within RL
 - Two fundamental problems in sequential decision making
 - Reinforcement Learning:
