@@ -16,20 +16,19 @@
       - [ Environment State](#nviromentstate)
       - [Agent State](#agentstate)
       - [Information State](#infostate)
-      - [Fully Observable Environments(#fullyobserve)
-      -[ Partially Observable Environments](#partiallyobserve)
+      - [Fully Observable Environments](#fullyobserve)
      
   - 4 Inside An RL Agent
-      -[ Major Components of an RL Agent](#majorcomponetinrl)
-      -[Policy](#policy)
-      -[Value Function](#valuefunct)
-      -[Model](#model)
-      -[ Example of Model](#examplesofmaze)
-      -[Categorizing RL agents](#catgorizingrl)  
+      - [ Major Components of an RL Agent](#majorcomponetinrl)
+      - [Policy](#policy)
+      - [Value Function](#valuefunct)
+      - [Model](#model)
+      - [ Example of Model](#examplesofmaze)
+      - [Categorizing RL agents](#catgorizingrl)  
   - 5 Problems within Reinforcement Learning
-      -[problems within RL](#problemsinRL)
-      -[Exploration and Exploitation](#expexp)
-      -[Prediction and Control](#pandc)
+      - [problems within RL](#problemsinRL)
+      - [Exploration and Exploitation](#expexp)
+      - [Prediction and Control](#pandc)
       
 
 <a id="aboutrl"></a>
