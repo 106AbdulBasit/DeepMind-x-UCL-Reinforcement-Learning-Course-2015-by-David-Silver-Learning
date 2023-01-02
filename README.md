@@ -289,22 +289,22 @@ history:
 
 <a id = "catgorizingrl"></a>
  
-#Categorizing RL agents
+# Categorizing RL agents
 - Value Based
- - No Policy (Implicit) (just focous on the value)
- - Value Function
+  - No Policy (Implicit) (just focous on the value)
+  - Value Function
 - Policy Based
- - Policy (focous on policy example teh arrows most possible awards)
- - No Value Function
+  - Policy (focous on policy example teh arrows most possible awards)
+  - No Value Function
 - Actor Critic
- - Policy
- - Value Function
+  - Policy
+  - Value Function
 - Model Free
- - Policy and/or Value Function (we don not try to understand the enviroments , we dont try to build dynamics of how helicopter moves instead we see the experince    and figure out the policy through award )
- - No Model  
+    - Policy and/or Value Function (we don not try to understand the enviroments , we dont try to build dynamics of how helicopter moves instead we see the experince    and figure out the policy through award )
+     - No Model  
 - Model Based
- - Policy and/or Value Function
- - Model (First we made the dynamics of the model and )
+    - Policy and/or Value Function
+    - Model (First we made the dynamics of the model and )
 
 The model and model free are the  fundamental distinguish type in RL
 
