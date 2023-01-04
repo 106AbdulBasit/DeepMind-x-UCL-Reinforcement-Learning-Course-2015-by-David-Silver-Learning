@@ -403,15 +403,79 @@ The model and model free are the  fundamental distinguish type in RL
 
 # Introduction to MDPs
 
-- Markov decision processes formally describe an environment
-- for reinforcement learning
+- Markov decision processes formally describe an environment for reinforcement learning
 - Where the environment is fully observable
+  - We told the state every thing about the enviroment all the relevant information is being presented to our agent nothing is hidden away
 - i.e. The current state completely characterises the process
+  - we told the state and its a fully observed
 - Almost all RL problems can be formalised as MDPs, e.g.
   - Optimal control primarily deals with continuous MDPs
+    - optimal control means , e.g  where you have a differntail dynamics and you have to control the flow and to dind the optimal way for the fluid , we can deal it      with an extantion of MDP which is continous MDP
   - Partially observable problems can be converted into MDPs
+    - any partially observable problem can be converted into MDP's
   - Bandits are MDPs with one state
+    -for ex,g exploration and exploitation
+    
+# Markov Property
+- The future is independent of the past given the present"
+- Defnition
+  - A state St is Markov if and only if P [St+1 j St ] = P [St+1 j S1; :::; St ]
+    - What happens next in our enviroment depends only in our previous state
+  - The state captures all relevant information from the history adn not on all the thing which came before that.
+  - Once the state is known, the history may be thrown away
+  - i.e. The state is a suf cient statistic of the future
   
+  ## State Transition Matrix
+   - For a Markov state s and successor state s0, the state transition probability is defned by
+    - Pss0 = P [St+1 = s0 j St = s]
+      - For any markov process adn it got some succesor state S prime then you can actually define the probality of transition of one state to another state
+      - State in which we are in charchtereized every thing that will happen next
+      - That means there is some well defiened transitional  probalities which can define the next state, 
+        - example if you push a person in right direction there is a probabilty that the person move in right direction
+   - State transition matrix P defnes transition probabilities from all
+     states s to all successor states s0,
+      - P = from
+                  
+                 
+                 P11 : : : P1n
+                 ...
+                  Pn1 : : : Pnn
+        - where each row of the matrix sums to 1
+          - each row in this matrix tell us what would happen for each state that I was in
+
+ # Markov Process
+ - Markov process is a memoryless random process, i.e. a sequence of random states S1; S2; ::: with the Markov property.
+ - A Markov Process (or Markov Chain) is a tuple {S;P}
+  - S is a (fnite) set of states
+  - P is a state transition probability matrix,
+    - Pss0 = P [St+1 = s0 j St = s]
+  - For e,g the dynamics of the robot walking, or chess playing game can be defined by the state base and transition base probablity matrix (Markov Process)
+  
+  ## Example: Student Markov Chain
+  ![Student markov chain](https://user-images.githubusercontent.com/36159918/210615968-5c01994e-6ca7-43f8-b9b6-f55be663d5f2.PNG)
+  - The things in a circle represent the state 
+  -  Imagne that to pass the course you had to take the three classes and in each class there is probablity of going to another state
+  -  The state in a square named as Sleep represent teh terminal state if you succesfully pass then you would go to the terminal state
+  
+   
+ # Student Markov Chain Episodes
+   - Consider the above picture
+   - Sample episodes for Student Markov Chain starting from S1 = C1
+        S1; S2; :::; ST
+   - C1 C2 C3 Pass Sleep
+   - C1 FB FB C1 C2 Sleep
+   - C1 C2 C3 Pub C2 C3 Pass Sleep
+   - C1 FB FB C1 C2 C3 Pub C1 FB FB
+   - FB C1 C2 C3 Pub C2 Sleep
 
 
+# Example: Student Markov Chain Transition Matrix
+ ![Student Markov Transition Matrix](https://user-images.githubusercontent.com/36159918/210618432-d7bb5719-e7b4-431b-91c8-a03fd7d8254c.PNG)
+ - The transition matrix tell us that anyone of these states which we might be in whats the probablity of transition into any other on the state
+ - Question : How do we deal with the  modification of the probablities over time
+  - Answer : Onw answer is that you can have  Non stationery markov process, non stationery mdp in that case what can you do , you can use same kind of algorithms we use in the stationery case but incrementally adjsut your solution algorithm so you can track best solution you found so far.
+   - Soliution 2 : The fact you got the non staioner dynamics just make the more complicated markov process
+ 
 
+  
+ 
