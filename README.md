@@ -524,13 +524,14 @@ The model and model free are the  fundamental distinguish type in RL
    - The state value function v(s) of an MRP is the expected return starting from state s
       - v(s) = E[Gt j St = s]
     
-   
+  
+
          
      
        
   # Example Student Markov Chain returns / Value Function
-      ![Student Valu function](https://user-images.githubusercontent.com/36159918/210814408-ef54489a-6a1c-4902-b5f6-cfda0ef46335.PNG)
-  
+     
+   ![Student Valu function](https://user-images.githubusercontent.com/36159918/210826558-ed9eca0b-b067-4397-9894-586bc30dd129.PNG)
   - y (Gamma ) dsicount = 0.5  
   - Take the bunch of the sample and take the average of the values and that would give you the legtimate value of the value function of that state
   
