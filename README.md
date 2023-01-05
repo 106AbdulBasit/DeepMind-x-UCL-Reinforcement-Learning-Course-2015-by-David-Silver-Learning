@@ -472,10 +472,139 @@ The model and model free are the  fundamental distinguish type in RL
 # Example: Student Markov Chain Transition Matrix
  ![Student Markov Transition Matrix](https://user-images.githubusercontent.com/36159918/210618432-d7bb5719-e7b4-431b-91c8-a03fd7d8254c.PNG)
  - The transition matrix tell us that anyone of these states which we might be in whats the probablity of transition into any other on the state
- - Question : How do we deal with the  modification of the probablities over time
-  - Answer : Onw answer is that you can have  Non stationery markov process, non stationery mdp in that case what can you do , you can use same kind of algorithms we use in the stationery case but incrementally adjsut your solution algorithm so you can track best solution you found so far.
-   - Soliution 2 : The fact you got the non staioner dynamics just make the more complicated markov process
+ - Question : How do we deal with the  modification of these probablities over time
+  - Answer : One answer is that you can have  Non stationery markov process, non stationery mdp, in that case what can you do , you can use same kind of algorithms we use in the stationery case but incrementally adjsut your solution algorithm so you can track the best solution you found so far.
+   - Soliution 2 : The fact you got the non staioner dynamics just make the more complicated markov process. You can agument the stage and more complicate markov       process.
+   
+   
+   
+ # Markov Reward Process
+ - Markov process with some value judgments
+ - A Markov reward process is a Markov chain with values.
+ - A Markov Reward Process is a tuple hS;P;R;Y (Gamma)
+    - S is a fnite set of states
+    - P is a state transition probability matrix,
+        - Pss0 = P [St+1 = s0 j St = s]
+    - R is a reward function, Rs = E[Rt+1 j St = s]
+        - Reward function tells that the how much award do i get in the state , its a immediate reward from that state that moment
+    - Y is a discount factor,  2 [0; 1]
+    
+    ## Example Student MRP
+      ![Student MRP](https://user-images.githubusercontent.com/36159918/210809967-db639c1e-7167-40b1-93df-4cf266bd71a1.PNG)
+      - added some value judgement   
+
+    ## Return
+    - You can say that the return is the goal of RL , maximize the reward 
+    - The return Gt is the total discounted reward from time-step t.
+      - Gt = Rt+1 + Rt+2 + ::: =1Xk=0 kRt+k+1
+       - Question : Why there is no expectation here?
+          - Becasue we just talking about the random sample here
+    - The discount Y 2 [0; 1] is the present value of future rewards
+      - how much reward I will get after 2 time step
+    - The value of receiving reward R after k + 1 time-steps is  kR.
+    - This values immediate reward above delayed reward.
+      - Y  close to 0 leads to "myopic" evaluation.
+        - The closesr to zero we more prefer reward now
+      - Y close to 1 leads to "far-sighted" evaluation.
+        - We more prefered reward after some time
+       
+    **Why discount?**
+    - Most Markov reward and decision processes are discounted. Why?
+      	- Mathematically convenient to discount rewards
+        - Avoids infnite returns in cyclic Markov processes
+        - Uncertainty about the future may not be fully represented
+        - If the reward is Fnancial, immediate rewards may earn more interest than delayed rewards
+        - Animal/human behaviour shows preference for immediate reward
+        - It is sometimes possible to use undiscounted Markov reward processes (i.e.  = 1), e.g. if all sequences terminate.
+        
+      
+   # Value Function
+   - The value function v(s) gives the long-term value of state s
+      - How much value you will get from this state. expected reward from this state
+   - The state value function v(s) of an MRP is the expected return starting from state s
+      - v(s) = E[Gt j St = s]
+    
+   
+         
+     
+       
+  # Example Student Markov Chain returns / Value Function
+      ![Student Valu function](https://user-images.githubusercontent.com/36159918/210814408-ef54489a-6a1c-4902-b5f6-cfda0ef46335.PNG)
+  
+  - y (Gamma ) dsicount = 0.5  
+  - Take the bunch of the sample and take the average of the values and that would give you the legtimate value of the value function of that state
+  
+   
+  
+  # State Value Function for Student MRP (1)
+  
+  
+      
+   ![statevalue function](https://user-images.githubusercontent.com/36159918/210815782-4b6cafb2-7bb1-4214-966a-dbeb0db539b8.PNG)
+   - shortsighted value of the value function
+   - we care about only one step
+
+   # State Value Function for Student MRP (2)
+   ![statevaluefunction2](https://user-images.githubusercontent.com/36159918/210816215-fc20f8ac-5c42-4ef7-8858-fdacb5032ab3.PNG)
+   - long sighted value of the value function
+   
+    # State Value Function for Student MRP (3)
+   ![statevaluefunction3](https://user-images.githubusercontent.com/36159918/210816869-0f27d476-ae53-4981-b7cb-30bfcbd5e6d6.PNG)
+   
+   
+   
+ # Bellman Equation for MRPs
+ - Idea is recurssive decomposition
+ - The value function can be decomposed into two parts:
+  - immediate reward Rt+1
+  - discounted value of successor state v(St+1)
+  
+  - v(s) = E[Gt j St = s
+    	  -  = [{Rt+1 + Rt+2 + 2Rt+3 + ::: j St = s]
+        - E[Rt+1 +  (Rt+2 + Rt+3 + :::) j St = s]
+        - E[Rt+1 +  Gt+1 j St = s]
+        - E[Rt+1 +  v(St+1) j St = s]
+        
+        - You take the sequence of the reward step and break that ino two parts basically the immideiate award that you would get and the value that you will get             after that time step
+        - for example if there is robot and it moves one step ahead he can get the immideiate award of plus 10 and end up in the new state but the question is that           how good i am in this new state so the over all value function of being here is the immideiate reward and the vlaue of that robot is ended up
  
+ # Bellman Equation for MRPs (2)
+ 
+   ![Bellman equationmdp](https://user-images.githubusercontent.com/36159918/210818632-11a56020-3797-4324-bd66-4166243f08f1.PNG)
+   E = expected 
+   Rt+1 = Immideait reward
+   v(St+1) = value function
+# Example: Bellman Equation for Student MRP
+
+![Bellman equationstudent](https://user-images.githubusercontent.com/36159918/210818950-476ea776-bbe0-4cbc-b70f-65ddefce648a.PNG)
+
+# Bellman Equation in Matrix Form
+
+ ![Bellman equationmmatrix](https://user-images.githubusercontent.com/36159918/210819272-a0aee8f9-65f2-410c-8cc2-7280d611ee3e.PNG)
+ - We can use Bellman equation to verify that these are the value function of the MDPS
+ - One step look ahead avergae that the all thing that might happen next and ending up back here again
+  - possible the two states
+    -  one = -2 + 0.6*10
+    -  Two = 0.4*0.8
+    - adding these two we can get the orignal state which is 4.3
+    
+# Solving the Bellman Equation
+- The Bellman equation is a linear equation
+- It can be solved directly:
+    - v = R +  Pv
+    - (I 􀀀 P) v = R
+    - v = (I 􀀀 P)􀀀1 R
+- Computational complexity is O(n3) for n states
+  - not for the large Markov process
+- Direct solution only possible for small MRPs
+- There are many iterative methods for large MRPs, e.g.
+  - Dynamic programming
+  - Monte-Carlo evaluation
+  - Temporal-Diference learning
+  
+
+ 
+
 
   
  
