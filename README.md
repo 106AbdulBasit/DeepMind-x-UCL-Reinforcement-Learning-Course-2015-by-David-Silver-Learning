@@ -606,6 +606,96 @@ The model and model free are the  fundamental distinguish type in RL
 
  
 
+# Markov Decision Process
+
+- A Markov decision process (MDP) is a Markov reward process with decisions. It is an environment in which all states are Markov.
+- A Markov Decision Process is a tuple {hS;A;P;R; i} 
+  - S is a fnite set of states
+  - A is a fnite set of actions
+  - P is a state transition probability matrix,
+    - transition probablity for each action you might take.
+  - Pass0 = P [St+1 = s0 j St = s;At = a]
+  - R is a reward function, Ras = E[Rt+1 j St = s; At = a]
+  - Y is a discount factor  Y (e) [0; 1].
+ 
+ # Student MDP
+ ![image](https://user-images.githubusercontent.com/36159918/211061363-29b91e30-7337-40ce-ad26-c8c787d12ee7.png)
+  - descision are the red labels on the archs
+  - The goal is to find the best path that maximizes the  reward that you get
+  
+# Policies (1)
+- A policy pie is a distribution over actions given states,
+   - pie (ajs) = P [At = a j St = s]
+      - A policy fully defnes the behaviour of an agent
+      - MDP policies depend on the current state (not the history)
+      - it only depends on the state not on the time state, that is what markov property is
+      - i.e. Policies are stationary (time-independent), At  (jSt ); 8t > 0 need to update the equation
+      
+ - Question :  Why there was no reward in this equation ?
+ -  Answer : Thats becasue state S full charchterised the future reward. In markov descion process the morkov property that the S fully charctersied the evolution 
+           from this state ownwards in the process  , so looking for a policy which given the state that you are in you want to pick action which gave you some                future reward, so the rewards are in future , we dont care bout the rewards which are in past , they are gone
+           
+      
+   # Policies (2)
+   
+   - Given an MDP M= hS;A;P;R;  i and a policy pie
+   - The state sequence S1; S2; ::: is a Markov process hS;Pi
+   - The state and reward sequence S1; R2; S2; ::: is a Markov reward process hS;P;R;i
+   - where
+    - Need to update the equations
+           
+
+   # Value Function
+   - The state-value function v(s) of an MDP is the expected return starting from state s, and then following policy pie
+   - v(s) = E [Gt j St = s]
+   - The action-value function q(s; a) is the expected return starting from state s, taking action a, and then following policy 
+   - q(s; a) = E [Gt j St = s;At = a]
+   
+   
+   # State-Value Function for Student MDP
+  ![statevaluefunctionmdp](https://user-images.githubusercontent.com/36159918/211065368-43ff05da-2239-4d02-a57d-aec78f31570b.PNG)
+  
+  # Bellman Expectation Equation
+
+  - The state-value function can again be decomposed into immediate reward plus discounted value of successor state,
+  - v(s) = E [Rt+1 +  v(St+1) j St = s]
+  - The action-value function can similarly be decomposed,
+  - q(s; a) = E [Rt+1 +  q(St+1;At+1) j St = s;At = a]
+  
+  # Bellman Expectation Equation for V
+  
+  ![Bellman equationV](https://user-images.githubusercontent.com/36159918/211065752-70ff19ff-a684-4ed9-bde5-e8465e610672.PNG)
 
   
+ # Bellman Expectation Equation for Q
+  ![Bellman equationQ](https://user-images.githubusercontent.com/36159918/211065884-1eafdded-9dd0-4d34-ba79-cf239b2610e1.PNG)
+
+# Bellman Expectation Equation for v (2)
+![Bellman equationV2](https://user-images.githubusercontent.com/36159918/211066075-1f98aefa-61e2-4e9a-9aa5-4b45e5e4d2ea.PNG)
+
+# Bellman Expectation Equation for q (2)
+
+![Bellman equationQ2](https://user-images.githubusercontent.com/36159918/211066206-2094214a-542b-49ac-b7c5-67e9e8431809.PNG)
+
+# Example: Bellman Expectation Equation in Student MDP
+![Bellman equationStudentmdp](https://user-images.githubusercontent.com/36159918/211066437-6afee070-170b-4d17-a3b3-79555ef1c277.PNG)
+
+
+# Bellman Expectation Equation (Matrix Form)
+- The Bellman expectation equation can be expressed conciselyusing the induced MRP,
+  - v = R + Pv
+- with direct solution
+  - v = (I 􀀀 P)􀀀1 R
+  
+# Optimal Value Function
+- The optimal state-value function v(s) is the maximum value function over all policies
+  - v(s) = max  v(s)
+- The optimal action-value function q(s; a) is the maximum action-value function over all policies
+  - q(s; a) = max  q(s; a)
+  
+- The optimal value function species the best possible performance in the MDP.
+- An MDP is \solved" when we know the optimal value fn.
+
+
+
  
