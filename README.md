@@ -642,118 +642,184 @@ The model and model free are the  fundamental distinguish type in RL
    - The state sequence S1; S2; ::: is a Markov process hS;Pi
    - The state and reward sequence S1; R2; S2; ::: is a Markov reward process hS;P;R;i
    - where
+      - The average dynamics defines some average markov process
     - Need to update the equations
            
 
    # Value Function
-   - The state-value function v(s) of an MDP is the expected return starting from state s, and then following policy pie
-   - v(s) = E [Gt j St = s]
-   - The action-value function q(s; a) is the expected return starting from state s, taking action a, and then following policy 
+   - The state-value function v pie(s) of an MDP is the expected return starting from state s, and then following policy pie
+   - vpie(s) = Epie [Gt j St = s]
+      - So v pies S tell us that how good is it to be in state S if I am follwing policey Pie , How much rward I will get
+   - The action-value function q(s; a) is the expected return starting from state s, taking action a, and then following policy Pie
+      - Which tell us that how good is an action in a particaluar state
    - q(s; a) = E [Gt j St = s;At = a]
    
    
    # State-Value Function for Student MDP
   ![statevaluefunctionmdp](https://user-images.githubusercontent.com/36159918/211065368-43ff05da-2239-4d02-a57d-aec78f31570b.PNG)
+  - This is the uniform random value function
   
   # Bellman Expectation Equation
 
   - The state-value function can again be decomposed into immediate reward plus discounted value of successor state,
+  - Bell Man equations for these value functions
   - v(s) = E [Rt+1 +  v(St+1) j St = s]
   - The action-value function can similarly be decomposed,
   - q(s; a) = E [Rt+1 +  q(St+1;At+1) j St = s;At = a]
+    - if I am in state and I take an action then i get the reward on the performed action then I looked up Where I end and the action value the state where I dump        in
   
   # Bellman Expectation Equation for V
   
   ![Bellman equationV](https://user-images.githubusercontent.com/36159918/211065752-70ff19ff-a684-4ed9-bde5-e8465e610672.PNG)
+  - average over the action that we might take
+  - we might take the action adn the probablites might define by these action probablity of going left and probablity going right
+  - look at the action value and average them to that tells the value of being in that state
+  - 
 
   
  # Bellman Expectation Equation for Q
   ![Bellman equationQ](https://user-images.githubusercontent.com/36159918/211065884-1eafdded-9dd0-4d34-ba79-cf239b2610e1.PNG)
+    - The action value function at the root tip
+    - V is telling that how particular good to be in that state
+    - Q tell us how good is to take that particular action in a given state
 
 # Bellman Expectation Equation for v (2)
 ![Bellman equationV2](https://user-images.githubusercontent.com/36159918/211066075-1f98aefa-61e2-4e9a-9aa5-4b45e5e4d2ea.PNG)
+- We putting V and Q togather
+- Check the state and action to carry out the policy 
+-  
 
 # Bellman Expectation Equation for q (2)
 
 ![Bellman equationQ2](https://user-images.githubusercontent.com/36159918/211066206-2094214a-542b-49ac-b7c5-67e9e8431809.PNG)
+- Bell man equation for action values
 
 # Example: Bellman Expectation Equation in Student MDP
 ![Bellman equationStudentmdp](https://user-images.githubusercontent.com/36159918/211066437-6afee070-170b-4d17-a3b3-79555ef1c277.PNG)
 
-
+- consider just red state
+- we going to use it verify 
+- look ahead for state value functions
+- each of this case end upin different state
+- 
 # Bellman Expectation Equation (Matrix Form)
 - The Bellman expectation equation can be expressed conciselyusing the induced MRP,
   - v = R + Pv
 - with direct solution
   - v = (I 􀀀 P)􀀀1 R
+  - Form these matrices pf the transistion probablies average those to get R pie and P pie solve thsi equationa dn it would give us the ation value
+  - Bellmans equations give us the discription of the system that we can solve once we solve we get teh value function you are done 
+  
+ 
+Qustion 
+- The pub is action and you can not stay there . In mdpas the reward is dependent on action adn state
+- Its combination of your action adn what enviroments affects on that
   
 # Optimal Value Function
-- The optimal state-value function v(s) is the maximum value function over all policies
-  - v(s) = max  v(s)
+- How to find best path through the system
+- The optimal state-value function v*(s) is the maximum value function over all policies
+  - v*(s) = max_pie v_pie(s)
 - The optimal action-value function q(s; a) is the maximum action-value function over all policies
-  - q(s; a) = max  q(s; a)
+  - q*(s; a) = max _pie q_pie(s; a)
+- If you kow q* you are done , beacus it would give you the all immideiate rewards and you can get the ebst reward value
   
 - The optimal value function species the best possible performance in the MDP.
 - An MDP is \solved" when we know the optimal value fn.
 
-
 # Example: Optimal Value Function for Student MDP
  ![Optimal Value Function for Student](https://user-images.githubusercontent.com/36159918/211582380-26dff742-772f-4cc7-9464-ca02e664efec.PNG)
+ - in this the optimal value is R = 10
+ - It does not tells you that how to behave in that state
  
 # Example: Optimal Action-Value Function for Student MDP
 
 ![optimal action value function for student](https://user-images.githubusercontent.com/36159918/211582649-c3c58517-4d07-4ac8-aee3-7a09f62363b3.PNG)
+- This gives the action value function , it gives the optimal value arc
+- we are dealing with discounting state 
+- 
 
 # Optimal Policy
 - Defne a partial ordering over policies
-  -   0 if v(s)  v0(s); 8s
+- whats the best policy?
+  - pie ->pie if v(s)  v0(s); 8s
+  - These are two polices , one policy is beeter is then other if the value fuction of the one policy is greater then value function of policy in all other state
+  - 
   
 - Theorem
   - For any Markov Decision Process
-  - There exists an optimal policy  that is better than or equal to all other policies,   ; 8
+  - There exists an optimal policy Pie that is better than or equal to all other policies,   ; 8
   - All optimal policies achieve the optimal value function, v(s) = v(s)
-  - All optimal policies achieve the optimal action-value function, q(s; a) = q(s; a)
+  - All optimal policies achieve the optimal action-value function, q_pie_*(s; a) = q*(s; a)
+- For any MDP there is always an one  optimal policy  that is better and equal to all other polices
+- it is possible there can be more then one optimal policy
+  the value functon for thoes policye must be same
   
  # Finding an Optimal Policy
  
  - An optimal policy can be found by maximising over q(s; a)
+ - You start the  q star and pick the action that maxinmise the q*
   -  math equation
   
  - There is always a deterministic optimal policy for any MDP
- - If we know q(s; a), we immediately have the optimal policy
+ - If we know q*(s; a), we immediately have the optimal policy
  
  # Example: Optimal Policy for Student MDP
  
  ![Optimal Policy for Student MDP](https://user-images.githubusercontent.com/36159918/211583916-f9a34658-e355-43fc-bbf0-92a8e0ee8b97.PNG)
+  - 
 
  
  # Bellman Optimality Equation for v*
  
  ![Bellman equationforV](https://user-images.githubusercontent.com/36159918/211584185-28724d54-556f-4745-9c68-f12f802b4c87.PNG)
+ - This is tells you really how to solve the MDPS
+ - we are looking the optimal values 
+ - look at the value at each state and pick the maximum of that state
 
  
  # Bellman Optimality Equation for Q*
  ![Bellman equationforQ](https://user-images.githubusercontent.com/36159918/211584406-2b78db55-18a9-41b8-8d94-d74796752cde.PNG)
+ - How good the on red arcs is
+ - what the dynamics migh look us
+ - what envirmoent perform in that state
+ - The value of each end up state and avergae all of the probality of states  multiply by the reward  and optimal value of being in that state
 
  # Bellman Optimality Equation for V* (2)
  ![Bellmanoptimalityequation](https://user-images.githubusercontent.com/36159918/211584758-69a400d9-8282-4af3-a9e2-e4c59db2bd2c.PNG)
+ -  Put those peices togather , this give us equation that we can solve
+ -  all the action that enivroment can do us and find the optimal value where we can end up
+ -  we back these thing up and tell us that how good to be in that state
+  
 
  # Bellman Optimality Equation for Q* (2)
 ![BellmanoptimalityequationQ](https://user-images.githubusercontent.com/36159918/211584984-2902a484-35b0-4498-9f79-711fa9069461.PNG)
+- we do the same thing and to find the q* values 
 
 # Bellman Optimality Equation
 Example: Bellman Optimality Equation in Student MDP
 ![Bellmanoptimalityequation StudentPNG](https://user-images.githubusercontent.com/36159918/211585256-d5709318-e0c7-407f-8d61-0df693a7e8c7.PNG)
 
+
 # Solving the Bellman Optimality Equation
+
 - Bellman Optimality Equation is non-linear
 - No closed form solution (in general)
 - Many iterative solution methods
-    - Value Iteration
-    - Policy Iteration
+    - Value Iteration(dynamic Programming)
+    - Policy Iteration(Dynamic Programming)
     - Q-learning
     - Sarsa
+Q : In reality the  MDP is just the model we are trying to model some real phenomena some in real envireoment , How do we represent the fact the our model is imprefect?
+   - some of the classical approches to uncertaity includes  implicity representing  uncertanity in the MDPS, so you could be the baysian for example have some poteriri mdp dynamics are not for single mdps but for the whole distribution mdps  and find the policy that is optimal to all of them that is computational is very costly. ANother representation is facture in the uncertainity in the representation of the world into your MDPS itself, So you are in a state not only the minus my rorbo(move backword) but my robot in a state where I think that  the world has these dynamics and I have see these observation so far adn you tell me about the unceratinty whats going on in mDPS, SO that can be much more attarctable dou dont necesassarly need to explict the uncertantinty in all the enviroment but may be its is little less intuviatively to understand the uncertainty. ANd may  be teh oitehr thing that just some time is sufficent to just accept taht our model is imperfect and use the discount factor to capture some uncertanity you can also make the discount factor variable representing the fact that you are more unceratin to others
 
+
+Q - Getting the maximum reward without considering implicity the risk of those returns
+- You can always tranform any mdp with no risk , if the some amount you care about risk of transformation of any risk sensitive mdps into  an other MDPS , how ever that can be complicated
+- Some people do consider the risk senstive MDPS
+Q - What is the intitution behind teh BELL man equation
+ TO find the optimal value for on state till the trajectory and you would find the optimal value function , for eg in pac man game if he moves right it would get the 10 poinst and 100 point to after ward but moving left you would get 20 points but 50 point afterward
+ Q so we have million state  and milllion action how would so solve the Large MDPS
+  - The reward function can be easily made for sate
 # Extensions to MDPs
 - Infnite and continuous MDPs
 - Partially observable MDPs
