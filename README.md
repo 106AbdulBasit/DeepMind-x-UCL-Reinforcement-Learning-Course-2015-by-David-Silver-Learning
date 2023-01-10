@@ -697,5 +697,131 @@ The model and model free are the  fundamental distinguish type in RL
 - An MDP is \solved" when we know the optimal value fn.
 
 
+# Example: Optimal Value Function for Student MDP
+ ![Optimal Value Function for Student](https://user-images.githubusercontent.com/36159918/211582380-26dff742-772f-4cc7-9464-ca02e664efec.PNG)
+ 
+# Example: Optimal Action-Value Function for Student MDP
+
+![optimal action value function for student](https://user-images.githubusercontent.com/36159918/211582649-c3c58517-4d07-4ac8-aee3-7a09f62363b3.PNG)
+
+# Optimal Policy
+- Defne a partial ordering over policies
+  -   0 if v(s)  v0(s); 8s
+  
+- Theorem
+  - For any Markov Decision Process
+  - There exists an optimal policy  that is better than or equal to all other policies,   ; 8
+  - All optimal policies achieve the optimal value function, v(s) = v(s)
+  - All optimal policies achieve the optimal action-value function, q(s; a) = q(s; a)
+  
+ # Finding an Optimal Policy
+ 
+ - An optimal policy can be found by maximising over q(s; a)
+  -  math equation
+  
+ - There is always a deterministic optimal policy for any MDP
+ - If we know q(s; a), we immediately have the optimal policy
+ 
+ # Example: Optimal Policy for Student MDP
+ 
+ ![Optimal Policy for Student MDP](https://user-images.githubusercontent.com/36159918/211583916-f9a34658-e355-43fc-bbf0-92a8e0ee8b97.PNG)
 
  
+ # Bellman Optimality Equation for v*
+ 
+ ![Bellman equationforV](https://user-images.githubusercontent.com/36159918/211584185-28724d54-556f-4745-9c68-f12f802b4c87.PNG)
+
+ 
+ # Bellman Optimality Equation for Q*
+ ![Bellman equationforQ](https://user-images.githubusercontent.com/36159918/211584406-2b78db55-18a9-41b8-8d94-d74796752cde.PNG)
+
+ # Bellman Optimality Equation for V* (2)
+ ![Bellmanoptimalityequation](https://user-images.githubusercontent.com/36159918/211584758-69a400d9-8282-4af3-a9e2-e4c59db2bd2c.PNG)
+
+ # Bellman Optimality Equation for Q* (2)
+![BellmanoptimalityequationQ](https://user-images.githubusercontent.com/36159918/211584984-2902a484-35b0-4498-9f79-711fa9069461.PNG)
+
+# Bellman Optimality Equation
+Example: Bellman Optimality Equation in Student MDP
+![Bellmanoptimalityequation StudentPNG](https://user-images.githubusercontent.com/36159918/211585256-d5709318-e0c7-407f-8d61-0df693a7e8c7.PNG)
+
+# Solving the Bellman Optimality Equation
+- Bellman Optimality Equation is non-linear
+- No closed form solution (in general)
+- Many iterative solution methods
+    - Value Iteration
+    - Policy Iteration
+    - Q-learning
+    - Sarsa
+
+# Extensions to MDPs
+- Infnite and continuous MDPs
+- Partially observable MDPs
+- Undiscounted, average reward MDPs
+
+
+# Infnite MDPs
+
+- The following extensions are all possible:
+  - Countably infnite state and/or action spaces
+    - Straightforward
+- Continuous state and/or action spaces
+  - Closed form for linear quadratic model (LQR)
+- Continuous time
+  - Requires partial diferential equations
+  - Hamilton-Jacobi-Bellman (HJB) equation
+  - Limiting case of Bellman equation as time-step --> 0
+  
+
+# POMDPs
+  - A Partially Observable Markov Decision Process is an MDP with hidden states. It is a hidden Markov model with actions.
+  - A POMDP is a tuple hS;A;O;P;R;Z; i
+    - S is a nite set of states
+    - A is a nite set of actions
+    - O is a nite set of observations
+    - P is a state transition probability matrix,
+        -Pass0 = P [St+1 = s0 j St = s;At = a]
+    - R is a reward function, Ras = E[Rt+1 j St = s; At = a]
+    - Z is an observation function, 
+        - Za s0o = P [Ot+1 = o j St+1 = s0;At = a]
+
+    - Y is a discount factor 2 [0; 1].
+    
+    
+ 
+# Belief States
+- A history Ht is a sequence of actions, observations and rewards,
+  - Ht = A0;O1; R1; :::;At􀀀1;Ot ; Rt
+- A belief state b(h) is a probability distribution over states, conditioned on the history h
+  - b(h) = (P  St = s1 j Ht = h  ; :::; P [St = sn j Ht = h])
+
+# Reductions of POMDPs
+![Reduction of MDPS](https://user-images.githubusercontent.com/36159918/211587314-dc43bf8a-1e32-4416-9651-7f8336e85ebc.PNG)
+
+# Ergodic Markov Process
+- An ergodic Markov process is
+  - Recurrent: each state is visited an innite number of times
+  - Aperiodic: each state is visited without any systematic period
+- Theorem
+  - An ergodic Markov process has a limiting stationary distribution
+     - d(s) with the property d(s) = X s02S d(s0)Ps0s
+     
+# Ergodic MDP
+- An MDP is ergodic if the Markov chain induced by any policy is ergodic.
+  - For any policy , an ergodic MDP has an average reward per time-step  that is independent of start state.
+  - Math equation
+  
+# Average Reward Value Function
+- The value function of an undiscounted, ergodic MDP can be expressed in terms of average reward.
+  - v(s) is the extra reward due to starting from state s,
+  
+  
+  
+  
+
+
+
+
+
+
+
