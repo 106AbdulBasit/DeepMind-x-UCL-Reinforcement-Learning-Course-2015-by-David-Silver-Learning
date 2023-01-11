@@ -31,7 +31,7 @@
       - [Prediction and Control](#pandc)
       
   # Lecture 2: Markov Decision Processes
-    - 1 Markov Processes
+  - 1 Markov Processes
         - [ Introduction to MDPs](#introtomdps)
         - [Markov Property](#markovpropertylec2)
         - [State Transition Matrix](#statetransionmatrixle2)
@@ -40,10 +40,9 @@
         - [Student Markov Chain Episodes](#3)
         - [ Example: Student Markov Chain Transition Matrix](#4)
       
-    - 2 Markov Reward Processes
+  - 2 Markov Reward Processes
           - [Markov Reward Process](#5)
           - [Example Student MRP](#6)
-
           - [Return](#7)
           - [Value Function](#8)
           - [Example Student Markov Chain returns / Value Function](#9)
@@ -55,8 +54,8 @@
           - [Example: Bellman Equation for Student MRP](#15)
           - [Bellman Equation in Matrix Form](#16)
           - [Solving the Bellman Equation](#17)
-    
-    - 3 Markov Decision Processes
+          - 
+   - 3 Markov Decision Processes
     
         - [Markov Decision Process](#18)
         - [Student MDP](#19)
@@ -89,7 +88,7 @@
     
     
         
-    - 4 Extensions to MDPs
+   - 4 Extensions to MDPs
     
         - [Extensions to MDPs](#43)
         - [Infnite MDPs](#44)
