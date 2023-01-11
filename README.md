@@ -57,8 +57,8 @@
           - 
    - 3 Markov Decision Processes
     
-    - [Markov Decision Process](#18)
-    - [Student MDP](#19)
+      - [Markov Decision Process](#18)
+      - [Student MDP](#19)
 
     - [ Policies (1)](#20)
     - [Policies (2)](#21)
