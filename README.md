@@ -7,7 +7,7 @@
       - [Charchteristics of Rienforcment learning](#charcter)
       - [Examples of RL](#examplesofrL)
   - 3 The Reinforcement Learning Problem
-      - [RL Problem](#rlprob)
+       - [RL Problem](#rlprob)
       - [Rewards](#reward)
       - [Example of Rewards](#exampleofre)
       - [Sequential Decision Making](#sd)
