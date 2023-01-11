@@ -32,13 +32,13 @@
       
   # Lecture 2: Markov Decision Processes
   - 1 Markov Processes
-        - [ Introduction to MDPs](#introtomdps)
-        - [Markov Property](#markovpropertylec2)
-        - [State Transition Matrix](#statetransionmatrixle2)
-        - [ Markov Process](#1)
-        - [ Example: Student Markov Chain](#2)
-        - [Student Markov Chain Episodes](#3)
-        - [ Example: Student Markov Chain Transition Matrix](#4)
+     - [ Introduction to MDPs](#introtomdps)
+     - [Markov Property](#markovpropertylec2)
+     - [State Transition Matrix](#statetransionmatrixle2)
+     - [ Markov Process](#1)
+     - [ Example: Student Markov Chain](#2)
+     - [Student Markov Chain Episodes](#3)
+     - [ Example: Student Markov Chain Transition Matrix](#4)
       
   - 2 Markov Reward Processes
           - [Markov Reward Process](#5)
