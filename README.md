@@ -32,8 +32,8 @@
       
   # Lecture 2: Markov Decision Processes
     - 1 Markov Processes
-        - [# Introduction to MDPs](#introtomdps)
-        - [# Markov Property](#markovpropertylec2)
+        - [ Introduction to MDPs](#introtomdps)
+        - [Markov Property](#markovpropertylec2)
         - [State Transition Matrix](#statetransionmatrixle2)
         - [ Markov Process](#1)
         - [ Example: Student Markov Chain](#2)
