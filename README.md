@@ -32,9 +32,73 @@
       
   # Lecture 2: Markov Decision Processes
     - 1 Markov Processes
+        - [# Introduction to MDPs](#introtomdps)
+        - [# Markov Property](#markovpropertylec2)
+        - [State Transition Matrix](#statetransionmatrixle2)
+        - [ Markov Process](#1)
+        - [ Example: Student Markov Chain](#2)
+        - [Student Markov Chain Episodes](#3)
+        - [ Example: Student Markov Chain Transition Matrix](#4)
+      
     - 2 Markov Reward Processes
+          - [Markov Reward Process](#5)
+          - [Example Student MRP](#6)
+
+          - [Return](#7)
+          - [Value Function](#8)
+          - [Example Student Markov Chain returns / Value Function](#9)
+          - [State Value Function for Student MRP (1)](#10)
+          - [State Value Function for Student MRP (2)](#11)
+          - [State Value Function for Student MRP (3)](#12)
+          - [Bellman Equation for MRPs](#13)
+          - [Bellman Equation for MRPs (2)](#14)
+          - [Example: Bellman Equation for Student MRP](#15)
+          - [Bellman Equation in Matrix Form](#16)
+          - [Solving the Bellman Equation](#17)
+    
     - 3 Markov Decision Processes
+    
+        - [Markov Decision Process](#18)
+        - [Student MDP](#19)
+
+        - [ Policies (1)](#20)
+        - [Policies (2)](#21)
+        - [Value Function](#22)
+        - [State-Value Function for Student MDP](#23)
+        - [Bellman Expectation Equation](#24)
+        - [Bellman Expectation Equation for V*](#25)
+        - [Bellman Expectation Equation for Q*](#26)
+        - [Bellman Expectation Equation for v* (2)](#27)
+
+        - [Bellman Expectation Equation for q* (2)](#28)
+        - [ Example: Bellman Expectation Equation in Student MDP](#29)
+        - [Bellman Expectation Equation (Matrix Form)](#30)
+        - [Optimal Value Function](#31)
+        - [Example: Optimal Value Function for Student MDP](#32)
+        - [Example: Optimal Action-Value Function for Student MDP](#33)
+        - [ Optimal Policy](#34)
+        - [Finding an Optimal Policy](#35)
+        - [Example: Optimal Policy for Student MDP](#36)
+        - [Bellman Optimality Equation for v*](#37)
+        - [Bellman Optimality Equation for Q*](#38)
+
+        - [ Bellman Optimality Equation for V* (2)](#39)
+        - [ Bellman Optimality Equation for Q* (2)](#40)
+        - [Bellman Optimality Equation](#41)
+        - [ Solving the Bellman Optimality Equation](#42)
+    
+    
+        
     - 4 Extensions to MDPs
+    
+        - [Extensions to MDPs](#43)
+        - [Infnite MDPs](#44)
+        - [POMDPs](#45)
+        - [ Belief States](#46)
+        - [Reductions of POMDPs](#47)
+        - [Ergodic Markov Process](#48)
+        - [Ergodic MDP](#49)
+        - [Average Reward Value Function](#50)
   
       
 
@@ -401,6 +465,7 @@ The model and model free are the  fundamental distinguish type in RL
 
 # Lecture 2  Markov Decision Process
 
+<a id = "introtomdps"></a>
 # Introduction to MDPs
 
 - Markov decision processes formally describe an environment for reinforcement learning
@@ -417,6 +482,8 @@ The model and model free are the  fundamental distinguish type in RL
     -for ex,g exploration and exploitation
     
 # Markov Property
+
+<a id = "markovpropertylec2"></a>
 - The future is independent of the past given the present"
 - Defnition
   - A state St is Markov if and only if P [St+1 j St ] = P [St+1 j S1; :::; St ]
@@ -426,6 +493,7 @@ The model and model free are the  fundamental distinguish type in RL
   - i.e. The state is a suf cient statistic of the future
   
   ## State Transition Matrix
+  <a id = "statetransionmatrixle2"></a>
    - For a Markov state s and successor state s0, the state transition probability is defned by
     - Pss0 = P [St+1 = s0 j St = s]
       - For any markov process adn it got some succesor state S prime then you can actually define the probality of transition of one state to another state
@@ -442,7 +510,7 @@ The model and model free are the  fundamental distinguish type in RL
                   Pn1 : : : Pnn
         - where each row of the matrix sums to 1
           - each row in this matrix tell us what would happen for each state that I was in
-
+<a id = "1"></a>
  # Markov Process
  - Markov process is a memoryless random process, i.e. a sequence of random states S1; S2; ::: with the Markov property.
  - A Markov Process (or Markov Chain) is a tuple {S;P}
@@ -450,14 +518,14 @@ The model and model free are the  fundamental distinguish type in RL
   - P is a state transition probability matrix,
     - Pss0 = P [St+1 = s0 j St = s]
   - For e,g the dynamics of the robot walking, or chess playing game can be defined by the state base and transition base probablity matrix (Markov Process)
-  
+  <a id = "2"></a>
   ## Example: Student Markov Chain
   ![Student markov chain](https://user-images.githubusercontent.com/36159918/210615968-5c01994e-6ca7-43f8-b9b6-f55be663d5f2.PNG)
   - The things in a circle represent the state 
   -  Imagne that to pass the course you had to take the three classes and in each class there is probablity of going to another state
   -  The state in a square named as Sleep represent teh terminal state if you succesfully pass then you would go to the terminal state
   
-   
+   <a id = "3"></a>
  # Student Markov Chain Episodes
    - Consider the above picture
    - Sample episodes for Student Markov Chain starting from S1 = C1
@@ -468,7 +536,7 @@ The model and model free are the  fundamental distinguish type in RL
    - C1 FB FB C1 C2 C3 Pub C1 FB FB
    - FB C1 C2 C3 Pub C2 Sleep
 
-
+<a id = "4"></a>
 # Example: Student Markov Chain Transition Matrix
  ![Student Markov Transition Matrix](https://user-images.githubusercontent.com/36159918/210618432-d7bb5719-e7b4-431b-91c8-a03fd7d8254c.PNG)
  - The transition matrix tell us that anyone of these states which we might be in whats the probablity of transition into any other on the state
@@ -477,7 +545,7 @@ The model and model free are the  fundamental distinguish type in RL
    - Soliution 2 : The fact you got the non staioner dynamics just make the more complicated markov process. You can agument the stage and more complicate markov       process.
    
    
-   
+   <a id = "5"></a>
  # Markov Reward Process
  - Markov process with some value judgments
  - A Markov reward process is a Markov chain with values.
@@ -488,11 +556,11 @@ The model and model free are the  fundamental distinguish type in RL
     - R is a reward function, Rs = E[Rt+1 j St = s]
         - Reward function tells that the how much award do i get in the state , its a immediate reward from that state that moment
     - Y is a discount factor,  2 [0; 1]
-    
+    <a id = "6"></a>
     ## Example Student MRP
       ![Student MRP](https://user-images.githubusercontent.com/36159918/210809967-db639c1e-7167-40b1-93df-4cf266bd71a1.PNG)
       - added some value judgement   
-
+<a id = "7"></a>
     ## Return
     - You can say that the return is the goal of RL , maximize the reward 
     - The return Gt is the total discounted reward from time-step t.
@@ -517,7 +585,7 @@ The model and model free are the  fundamental distinguish type in RL
         - Animal/human behaviour shows preference for immediate reward
         - It is sometimes possible to use undiscounted Markov reward processes (i.e.  = 1), e.g. if all sequences terminate.
         
-      
+  <a id = "8"></a>    
    # Value Function
    - The value function v(s) gives the long-term value of state s
       - How much value you will get from this state. expected reward from this state
@@ -528,7 +596,7 @@ The model and model free are the  fundamental distinguish type in RL
 
          
      
-       
+    <a id = "9"></a>   
   # Example Student Markov Chain returns / Value Function
      
    ![Student Valu function](https://user-images.githubusercontent.com/36159918/210826558-ed9eca0b-b067-4397-9894-586bc30dd129.PNG)
@@ -536,7 +604,7 @@ The model and model free are the  fundamental distinguish type in RL
   - Take the bunch of the sample and take the average of the values and that would give you the legtimate value of the value function of that state
   
    
-  
+ <a id = "10"></a> 
   # State Value Function for Student MRP (1)
   
   
@@ -544,16 +612,16 @@ The model and model free are the  fundamental distinguish type in RL
    ![statevalue function](https://user-images.githubusercontent.com/36159918/210815782-4b6cafb2-7bb1-4214-966a-dbeb0db539b8.PNG)
    - shortsighted value of the value function
    - we care about only one step
-
+<a id = "11"></a>
    # State Value Function for Student MRP (2)
    ![statevaluefunction2](https://user-images.githubusercontent.com/36159918/210816215-fc20f8ac-5c42-4ef7-8858-fdacb5032ab3.PNG)
    - long sighted value of the value function
-   
+   <a id = "12"></a>
     # State Value Function for Student MRP (3)
    ![statevaluefunction3](https://user-images.githubusercontent.com/36159918/210816869-0f27d476-ae53-4981-b7cb-30bfcbd5e6d6.PNG)
    
    
-   
+   <a id = "13"></a>
  # Bellman Equation for MRPs
  - Idea is recurssive decomposition
  - The value function can be decomposed into two parts:
@@ -567,17 +635,22 @@ The model and model free are the  fundamental distinguish type in RL
         - E[Rt+1 +  v(St+1) j St = s]
         
         - You take the sequence of the reward step and break that ino two parts basically the immideiate award that you would get and the value that you will get             after that time step
-        - for example if there is robot and it moves one step ahead he can get the immideiate award of plus 10 and end up in the new state but the question is that           how good i am in this new state so the over all value function of being here is the immideiate reward and the vlaue of that robot is ended up
- 
+        - for example if there is robot and it moves one step ahead he can get the immideiate award of plus 10 and end up in the new state but the question is that          how good i am in this new state so the over all value function of being here is the immideiate reward and the vlaue of that robot is ended up
+
+<a id = "14"></a>
  # Bellman Equation for MRPs (2)
  
    ![Bellman equationmdp](https://user-images.githubusercontent.com/36159918/210818632-11a56020-3797-4324-bd66-4166243f08f1.PNG)
    E = expected 
    Rt+1 = Immideait reward
    v(St+1) = value function
+  
+ <a id = "15"></a>
 # Example: Bellman Equation for Student MRP
 
 ![Bellman equationstudent](https://user-images.githubusercontent.com/36159918/210818950-476ea776-bbe0-4cbc-b70f-65ddefce648a.PNG)
+
+<a id = "16"></a>
 
 # Bellman Equation in Matrix Form
 
@@ -588,6 +661,8 @@ The model and model free are the  fundamental distinguish type in RL
     -  one = -2 + 0.6*10
     -  Two = 0.4*0.8
     - adding these two we can get the orignal state which is 4.3
+    
+   <a id = "17"></a> 
     
 # Solving the Bellman Equation
 - The Bellman equation is a linear equation
@@ -605,6 +680,7 @@ The model and model free are the  fundamental distinguish type in RL
   
 
  
+<a id = "18"></a>
 
 # Markov Decision Process
 
@@ -617,12 +693,15 @@ The model and model free are the  fundamental distinguish type in RL
   - Pass0 = P [St+1 = s0 j St = s;At = a]
   - R is a reward function, Ras = E[Rt+1 j St = s; At = a]
   - Y is a discount factor  Y (e) [0; 1].
- 
+
+<a id = "19"></a>
+
  # Student MDP
  ![image](https://user-images.githubusercontent.com/36159918/211061363-29b91e30-7337-40ce-ad26-c8c787d12ee7.png)
   - descision are the red labels on the archs
   - The goal is to find the best path that maximizes the  reward that you get
   
+ <a id = "20"></a> 
 # Policies (1)
 - A policy pie is a distribution over actions given states,
    - pie (ajs) = P [At = a j St = s]
@@ -635,7 +714,8 @@ The model and model free are the  fundamental distinguish type in RL
  -  Answer : Thats becasue state S full charchterised the future reward. In markov descion process the morkov property that the S fully charctersied the evolution 
            from this state ownwards in the process  , so looking for a policy which given the state that you are in you want to pick action which gave you some                future reward, so the rewards are in future , we dont care bout the rewards which are in past , they are gone
            
-      
+   
+  <a id = "21"></a> 
    # Policies (2)
    
    - Given an MDP M= hS;A;P;R;  i and a policy pie
@@ -645,7 +725,7 @@ The model and model free are the  fundamental distinguish type in RL
       - The average dynamics defines some average markov process
     - Need to update the equations
            
-
+<a id = "22"></a>
    # Value Function
    - The state-value function v pie(s) of an MDP is the expected return starting from state s, and then following policy pie
    - vpie(s) = Epie [Gt j St = s]
@@ -655,10 +735,13 @@ The model and model free are the  fundamental distinguish type in RL
    - q(s; a) = E [Gt j St = s;At = a]
    
    
+  <a id = "23"></a> 
    # State-Value Function for Student MDP
   ![statevaluefunctionmdp](https://user-images.githubusercontent.com/36159918/211065368-43ff05da-2239-4d02-a57d-aec78f31570b.PNG)
   - This is the uniform random value function
   
+  
+<a id = "24"></a>  
   # Bellman Expectation Equation
 
   - The state-value function can again be decomposed into immediate reward plus discounted value of successor state,
@@ -668,6 +751,9 @@ The model and model free are the  fundamental distinguish type in RL
   - q(s; a) = E [Rt+1 +  q(St+1;At+1) j St = s;At = a]
     - if I am in state and I take an action then i get the reward on the performed action then I looked up Where I end and the action value the state where I dump        in
   
+  
+  <a id = "25"></a>
+  
   # Bellman Expectation Equation for V
   
   ![Bellman equationV](https://user-images.githubusercontent.com/36159918/211065752-70ff19ff-a684-4ed9-bde5-e8465e610672.PNG)
@@ -676,6 +762,7 @@ The model and model free are the  fundamental distinguish type in RL
   - look at the action value and average them to that tells the value of being in that state
   - 
 
+  <a id = "26"></a>
   
  # Bellman Expectation Equation for Q
   ![Bellman equationQ](https://user-images.githubusercontent.com/36159918/211065884-1eafdded-9dd0-4d34-ba79-cf239b2610e1.PNG)
@@ -683,16 +770,23 @@ The model and model free are the  fundamental distinguish type in RL
     - V is telling that how particular good to be in that state
     - Q tell us how good is to take that particular action in a given state
 
+
+<a id = "27"></a>
+
 # Bellman Expectation Equation for v (2)
 ![Bellman equationV2](https://user-images.githubusercontent.com/36159918/211066075-1f98aefa-61e2-4e9a-9aa5-4b45e5e4d2ea.PNG)
 - We putting V and Q togather
 - Check the state and action to carry out the policy 
 -  
 
+<a id = "28"></a>
+
 # Bellman Expectation Equation for q (2)
 
 ![Bellman equationQ2](https://user-images.githubusercontent.com/36159918/211066206-2094214a-542b-49ac-b7c5-67e9e8431809.PNG)
 - Bell man equation for action values
+
+<a id = "29"></a>
 
 # Example: Bellman Expectation Equation in Student MDP
 ![Bellman equationStudentmdp](https://user-images.githubusercontent.com/36159918/211066437-6afee070-170b-4d17-a3b3-79555ef1c277.PNG)
@@ -701,7 +795,9 @@ The model and model free are the  fundamental distinguish type in RL
 - we going to use it verify 
 - look ahead for state value functions
 - each of this case end upin different state
-- 
+
+<a id = "30"></a>
+
 # Bellman Expectation Equation (Matrix Form)
 - The Bellman expectation equation can be expressed conciselyusing the induced MRP,
   - v = R + Pv
@@ -715,6 +811,7 @@ Qustion
 - The pub is action and you can not stay there . In mdpas the reward is dependent on action adn state
 - Its combination of your action adn what enviroments affects on that
   
+<a id = "31"></a>  
 # Optimal Value Function
 - How to find best path through the system
 - The optimal state-value function v*(s) is the maximum value function over all policies
@@ -726,17 +823,23 @@ Qustion
 - The optimal value function species the best possible performance in the MDP.
 - An MDP is \solved" when we know the optimal value fn.
 
+<a id = "32"></a>
+
 # Example: Optimal Value Function for Student MDP
  ![Optimal Value Function for Student](https://user-images.githubusercontent.com/36159918/211582380-26dff742-772f-4cc7-9464-ca02e664efec.PNG)
  - in this the optimal value is R = 10
  - It does not tells you that how to behave in that state
  
+ 
+ <a id = "33"></a>
 # Example: Optimal Action-Value Function for Student MDP
 
 ![optimal action value function for student](https://user-images.githubusercontent.com/36159918/211582649-c3c58517-4d07-4ac8-aee3-7a09f62363b3.PNG)
 - This gives the action value function , it gives the optimal value arc
 - we are dealing with discounting state 
-- 
+
+<a id = "34"></a>
+
 
 # Optimal Policy
 - Defne a partial ordering over policies
@@ -754,6 +857,8 @@ Qustion
 - it is possible there can be more then one optimal policy
   the value functon for thoes policye must be same
   
+  
+ <a id = "35"></a> 
  # Finding an Optimal Policy
  
  - An optimal policy can be found by maximising over q(s; a)
@@ -763,12 +868,14 @@ Qustion
  - There is always a deterministic optimal policy for any MDP
  - If we know q*(s; a), we immediately have the optimal policy
  
+ 
+ <a id = "36"></a>
  # Example: Optimal Policy for Student MDP
  
  ![Optimal Policy for Student MDP](https://user-images.githubusercontent.com/36159918/211583916-f9a34658-e355-43fc-bbf0-92a8e0ee8b97.PNG)
   - 
 
- 
+ <a id = "37"></a>
  # Bellman Optimality Equation for v*
  
  ![Bellman equationforV](https://user-images.githubusercontent.com/36159918/211584185-28724d54-556f-4745-9c68-f12f802b4c87.PNG)
@@ -776,7 +883,7 @@ Qustion
  - we are looking the optimal values 
  - look at the value at each state and pick the maximum of that state
 
- 
+ <a id = "38"></a>
  # Bellman Optimality Equation for Q*
  ![Bellman equationforQ](https://user-images.githubusercontent.com/36159918/211584406-2b78db55-18a9-41b8-8d94-d74796752cde.PNG)
  - How good the on red arcs is
@@ -784,21 +891,29 @@ Qustion
  - what envirmoent perform in that state
  - The value of each end up state and avergae all of the probality of states  multiply by the reward  and optimal value of being in that state
 
+<a id = "39"></a>
+
  # Bellman Optimality Equation for V* (2)
  ![Bellmanoptimalityequation](https://user-images.githubusercontent.com/36159918/211584758-69a400d9-8282-4af3-a9e2-e4c59db2bd2c.PNG)
  -  Put those peices togather , this give us equation that we can solve
  -  all the action that enivroment can do us and find the optimal value where we can end up
  -  we back these thing up and tell us that how good to be in that state
   
+<a id = "40"></a>
+
+
 
  # Bellman Optimality Equation for Q* (2)
 ![BellmanoptimalityequationQ](https://user-images.githubusercontent.com/36159918/211584984-2902a484-35b0-4498-9f79-711fa9069461.PNG)
 - we do the same thing and to find the q* values 
 
+<a id = "41"></a>
+
 # Bellman Optimality Equation
 Example: Bellman Optimality Equation in Student MDP
 ![Bellmanoptimalityequation StudentPNG](https://user-images.githubusercontent.com/36159918/211585256-d5709318-e0c7-407f-8d61-0df693a7e8c7.PNG)
 
+<a id = "42"></a>
 
 # Solving the Bellman Optimality Equation
 
@@ -820,11 +935,17 @@ Q - What is the intitution behind teh BELL man equation
  TO find the optimal value for on state till the trajectory and you would find the optimal value function , for eg in pac man game if he moves right it would get the 10 poinst and 100 point to after ward but moving left you would get 20 points but 50 point afterward
  Q so we have million state  and milllion action how would so solve the Large MDPS
   - The reward function can be easily made for sate
+  
+  
+  <a id = "43"></a>
+  
 # Extensions to MDPs
 - Infnite and continuous MDPs
 - Partially observable MDPs
 - Undiscounted, average reward MDPs
 
+
+<a id = "44"></a>
 
 # Infnite MDPs
 
@@ -838,7 +959,7 @@ Q - What is the intitution behind teh BELL man equation
   - Hamilton-Jacobi-Bellman (HJB) equation
   - Limiting case of Bellman equation as time-step --> 0
   
-
+<a id = "45"></a>
 # POMDPs
   - A Partially Observable Markov Decision Process is an MDP with hidden states. It is a hidden Markov model with actions.
   - A POMDP is a tuple hS;A;O;P;R;Z; i
@@ -855,14 +976,19 @@ Q - What is the intitution behind teh BELL man equation
     
     
  
+ <a id = "46"></a>
 # Belief States
 - A history Ht is a sequence of actions, observations and rewards,
   - Ht = A0;O1; R1; :::;At􀀀1;Ot ; Rt
 - A belief state b(h) is a probability distribution over states, conditioned on the history h
   - b(h) = (P  St = s1 j Ht = h  ; :::; P [St = sn j Ht = h])
 
+<a id = "47"></a>
+
 # Reductions of POMDPs
 ![Reduction of MDPS](https://user-images.githubusercontent.com/36159918/211587314-dc43bf8a-1e32-4416-9651-7f8336e85ebc.PNG)
+
+<a id = "48"></a>
 
 # Ergodic Markov Process
 - An ergodic Markov process is
@@ -872,10 +998,14 @@ Q - What is the intitution behind teh BELL man equation
   - An ergodic Markov process has a limiting stationary distribution
      - d(s) with the property d(s) = X s02S d(s0)Ps0s
      
+     
+    <a id = "49"></a> 
 # Ergodic MDP
 - An MDP is ergodic if the Markov chain induced by any policy is ergodic.
   - For any policy , an ergodic MDP has an average reward per time-step  that is independent of start state.
   - Math equation
+  
+<a id = "50"></a>  
   
 # Average Reward Value Function
 - The value function of an undiscounted, ergodic MDP can be expressed in terms of average reward.
