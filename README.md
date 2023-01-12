@@ -1013,20 +1013,119 @@ Q - What is the intitution behind teh BELL man equation
 
 
 ![DP1024_1](https://user-images.githubusercontent.com/36159918/211876449-f57738a3-be75-4030-9d63-0e1352aa258a.jpg)
+# Outline
 ![DP1024_2](https://user-images.githubusercontent.com/36159918/211876455-65caab03-3240-461c-bf33-a7d5c5ae44ba.jpg)
+
+# What is Dynamic Programming?
 ![DP1024_3](https://user-images.githubusercontent.com/36159918/211876464-35e73141-89e0-4cac-916e-6d508c5be6af.jpg)
+ 
+ - Problems that have sequential aspects , step by step fraction
+ -  we talking about mathmateical propgrammin , and program means policy
+ - any problem that we can break down into sub prblems is in dynamic probolme 
+ 
+# Requirements for Dynamic Programming
 ![DP1024_4](https://user-images.githubusercontent.com/36159918/211876471-60e32427-c70b-434f-8977-46c07d96618e.jpg)
+- Optimal structure : Principal of optimality applies, it basically telss you that you can solve the alll sub problems by breaking it down int two or more peices     and solving thoses pecies and the optimal solution of all these peieces tells you  how to get the over optimal  solution.
+  shotest path is the example
+-  Overlapping: subproblem that occour , can occour again and again lke actully subproblem can occur again for many high problem that i want to solve
+- solution can be resued again
+- bell equation tells us how to break down the  optimal value function into two pieceis . The optimal behaviour for one step followed by the optimal behviour for     next step
+- value function for any state , I already  figure it out the solution for that state, value fuction tells you the optimal behave the optimal reward you can get     from that
+ 
+
+# Planning by Dynamic Programming
 ![DP1024_5](https://user-images.githubusercontent.com/36159918/211876478-2e429492-a858-4c3e-8afc-29cb58407f15.jpg)
+- planning is the problem , where some one tellus the dynamics of the mDP
+- strat with the prediction
+- We can plan to solve the prediction problems
+- How much reward you would get with the value function
+- Control is second type of planning , we trying to figure out the best solution
+- When we dolve the MDP we think of teh control , what is the best  value function for this problem
+
+
+
+# Other Applications of Dynamic Programming
+ 
 ![DP1024_6](https://user-images.githubusercontent.com/36159918/211876490-ce676eac-460d-4c1a-b4b2-63405cf451c9.jpg)
+  - - its used for many different things
+  
+# Iterative Policy Evaluation
 ![DP1024_7](https://user-images.githubusercontent.com/36159918/211876498-3b0cae08-2a03-45d5-b097-bfb9d692edba.jpg)
+  -  We will use Bell man Expectation eqution for policy evaultion
+  - we Will use Bell man Optimality equation for control later on
+  - Take the bellman equation into iterative  whihc give us policy 
+  - Synchorous Back up
+    -  In every iteration we consider all sattes of MDP
+    - update teh value function of each state at each step
+    
+# Iterative Policy Evaluation (2)
 ![DP1024_8](https://user-images.githubusercontent.com/36159918/211876503-a929bdd6-2052-407d-8b39-598ee0573af8.jpg)
+- its a expectatcion equation of bellman
+-  Turn it into a iterative process
+- plug in the equation and update after each step for second value
+- That give us a caomplete new value function
+- This process gaurante eto converge on treu value function
+# Evaluating a Random Policy in the Small Gridworld
+
 ![DP1024_9](https://user-images.githubusercontent.com/36159918/211876512-38799dfd-e548-47ed-9917-6ab52a8429ae.jpg)
+- Shaded are teh terminal state , end of the episode 
+- 4 action in the campous, north east south and west
+- How many steps it would take to end up in one of thses reward state
+- probality of all corner is unform means  east, west , south east = 0.25
+
+# Iterative Policy Evaluation in Small Gridworld
 ![DP1024_10](https://user-images.githubusercontent.com/36159918/211876553-ac2f671a-7323-4cdc-9fac-528ad3b2f67e.jpg)
+ - In the left colum we got the  state value function
+ - V0 = intial estimate
+ - one step of iterative policy of bellman equation to all states  and we get the V1
+ - look teh value according to old estimate
+ - Which ever direation we are going , we get the -1 reward as we taken teh step then we look at the valuea ccording to our old estimate
+ - same logic apply except for the terminal step
+ - Righ hand colum tell us how to make teh better policy
+ - we start off random policy
+ -  On the second colum we can see that by going right it has the value of -1 but going to left it would end up in greay state
+ 
+ # Iterative Policy Evaluation in Small Gridworld (2)
 ![DP1024_11](https://user-images.githubusercontent.com/36159918/211876569-c7cfd7e4-5e2b-4c80-b53b-1e0877f792b6.jpg)
+- This this satblizes at true value function
+- This basically tells us that if we go out the random walk how many steps it going to take on average  to end up in the geray state
+
+# How to Improve a Policy
 ![DP1024_12](https://user-images.githubusercontent.com/36159918/211876586-7b871fcb-39a5-436c-8fbc-4ffb1ea9b1db.jpg)
+- How can we ceratin about the policy is that it is teh ebst policy
+- Break down it on two step
+    - complete the value function
+    -  we improve the policy with repesect to value function
+- Round and roudn it is a iterative process and eventually it will converge to optimal policy
+
+There is alwasy every one is destertministic policy
+it will be greedy and every other step is determinisctic policy
+# Policy Iteration
 ![DP1024_13](https://user-images.githubusercontent.com/36159918/211876610-22a543fd-8c88-40ad-bfd2-04721c82f5b2.jpg)
+- Inputs are some arbiraty values
+- policy = V= Vpie
+- Policy evaluation of Up arrow
+- policy of improvmenet down arrow
+- we start with the policy ,we act greedy with respect to that polcy 
+- Question - will it alwaays converge irresepctive of starting point
+- Answer Yes it will always converge to optimal policy
+# Jack's Car Rental
 ![DP1024_14](https://user-images.githubusercontent.com/36159918/211876618-56e12e0f-07d5-44e7-b8e2-43788a884213.jpg)
+
+- Its a toy example
+- whast the optmial policy for shifting car for rent a car
+
+# Policy Iteration in Jack's Car Rental
 ![DP1024_15](https://user-images.githubusercontent.com/36159918/211876624-7ee8c3e7-f708-4a4d-ab43-521fc5b52946.jpg)
+- Five squares repesent the policies
+- Number of car s at X  ais for one location
+- Number of cars at Y aixs for second location
+- every time with new policy we come with new surface
+- In this example we known the probablities of demanding the car  in some way dynamics are decribed
+- Q : How can I read the policy here ?
+- Answer : we read of the state and state in given by any point , 
+
+# Policy Improvement
 ![DP1024_16](https://user-images.githubusercontent.com/36159918/211876632-1f464218-8fa8-4db9-a3d4-6ad0c9f57b82.jpg)
 ![DP1024_17](https://user-images.githubusercontent.com/36159918/211876652-8687ba66-787c-4d14-ac86-80fe1e263563.jpg)
 ![DP1024_18](https://user-images.githubusercontent.com/36159918/211876663-75163e9e-0fa1-4d7a-8310-61fd4aaa58ef.jpg)
