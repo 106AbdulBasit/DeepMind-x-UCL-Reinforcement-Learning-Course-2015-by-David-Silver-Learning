@@ -1127,6 +1127,7 @@ it will be greedy and every other step is determinisctic policy
 
 # Policy Improvement
 ![DP1024_16](https://user-images.githubusercontent.com/36159918/211876632-1f464218-8fa8-4db9-a3d4-6ad0c9f57b82.jpg)
+
 ![DP1024_17](https://user-images.githubusercontent.com/36159918/211876652-8687ba66-787c-4d14-ac86-80fe1e263563.jpg)
 ![DP1024_18](https://user-images.githubusercontent.com/36159918/211876663-75163e9e-0fa1-4d7a-8310-61fd4aaa58ef.jpg)
 ![DP1024_19](https://user-images.githubusercontent.com/36159918/211876675-fa2cbe8e-95b2-4270-89fe-909e463acb7a.jpg)
