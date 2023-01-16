@@ -1123,28 +1123,115 @@ it will be greedy and every other step is determinisctic policy
 - every time with new policy we come with new surface
 - In this example we known the probablities of demanding the car  in some way dynamics are decribed
 - Q : How can I read the policy here ?
-- Answer : we read of the state and state in given by any point , 
-
+- Answer : we read of the state and state in given by any point , we look at the number s; its like a contol map
+- Q waht are the dollar's
+- Ans : so if you in a sitution you would stell get the money , its the total life time doolar on this value and discount factor
+- Q : How sensitive is this convergae rate to pie zera
+- Ans The convergaenc rate is independent to Pie zero ,  its independent to intial value
 # Policy Improvement
 ![DP1024_16](https://user-images.githubusercontent.com/36159918/211876632-1f464218-8fa8-4db9-a3d4-6ad0c9f57b82.jpg)
-
+- we satrt off wity some deterministic policy
+- acting greedly always made you determininstic.
+- give action in agiven way so that it give us the maximum award
+- 
+# Policy Improvement 2
 ![DP1024_17](https://user-images.githubusercontent.com/36159918/211876652-8687ba66-787c-4d14-ac86-80fe1e263563.jpg)
+- If first equation statifyed then bell man equation has been satisfied
+- That tell us V pie is the optimal policy
+being greedy doesnet mean for only one action  it acount for teh all possilbe steps 
+
+# Modifed Policy Iteration
 ![DP1024_18](https://user-images.githubusercontent.com/36159918/211876663-75163e9e-0fa1-4d7a-8310-61fd4aaa58ef.jpg)
+- The basic idea is to stop early , if you are close enough then you can stop
+-  or we can take Naive approach , it still converages to optimial but the only acse where it would not be convergance is take 1 step
+
+# Generalised Policy Iteration
 ![DP1024_19](https://user-images.githubusercontent.com/36159918/211876675-fa2cbe8e-95b2-4270-89fe-909e463acb7a.jpg)
+
+# Principle of Optimality
 ![DP1024_20](https://user-images.githubusercontent.com/36159918/211876683-654bbde5-2795-4b1d-8ebf-bb26071d863c.jpg)
+- if my first action is optimal then our over all behaviour is optimal
+- You can break down into sub pieceis
+
+# Deterministic Value Iteration
 ![DP1024_21](https://user-images.githubusercontent.com/36159918/211876684-8a506cd3-8861-4013-8d99-911bb5b9afed.jpg)
+-consider this as Backward induction algorithim
+- looping all over state base
+- we update every state on every iteration  eventually we end up on  optimal value but we dont know what could that state can take to me , where that state would end up
+- Q we were wroking backward from the final stage, if there is no final stage would that algorithm still work? 
+- In practice the algorithm doesnot now about the fincal state , if there is no finals state the algorithm still work , it will still find the optimal value
+
+
+
+# Example: Shortest Path
 ![DP1024_22](https://user-images.githubusercontent.com/36159918/211876690-3534bfd1-104e-4a05-a3a5-f1389fe0c050.jpg)
+ - whats the optimal path steps
+ - we want to find the shortest path
+ -
+# Value Iteration
 ![DP1024_23](https://user-images.githubusercontent.com/36159918/211876694-8dc022ab-471a-48fa-8a11-6fec84ed7f2f.jpg)
+- We are not currently implementing the fully RL, some one tellling us about teh enviroment about teh dynamics
+- its another mechanics to solve MDP
+- The  idea of value iteration is to take bellman optimality equation and iterate it again and again
+- That give the optimal value function
+- Q : do you always need to build the entire value function and the answer is no
+- Difference between valkue iteration and policy iteration
+- we are no building policy here, value  iteration go from value function from one to second  and so on
+- Intermideiate V you ma get may not equal to Pie , any given moment taht may not be the value function of any real policy , its not like policy iteration
+- Q Great One : In the grid example we see the values are getting smaller and smaller but the theorem shows us that value of a policy is getting bigger and bigger 
+- The value function would be change but we neve sya that teh it will go up and up we nver syathe value of value iteration strictly go up in value, this illustrate the building intermidetaite value and actually evalutiong a true policy , 
+# Value Iteration (2)
 ![DP1024_24](https://user-images.githubusercontent.com/36159918/211876705-7b0bf50b-e3c7-41b8-bec9-86cd33f49e6d.jpg)
+-  we put in old value function in the leaves
+- This is the bell man optimallity equation ,turning into the iterative update
+
+# Example of Value Iteration in Practice
 ![DP1024_25](https://user-images.githubusercontent.com/36159918/211876718-f1034047-aaa0-48bb-83a3-55fa65392b41.jpg)
+# Synchronous Dynamic Programming Algorithms
 ![DP1024_26](https://user-images.githubusercontent.com/36159918/211876726-eded039d-02ee-4446-81eb-e7f22fbdd32e.jpg)
+- Prediction means that how much reward you will get 
+- You have two problesm and all of these the planning problem
+-  Turn The bell mabn expection equation into to iterative it would give us policy evaluation
+- Two different families of the   algorithm that maximise the reward  one is with policy Itearation , The Bellman Optimality tell us teh amximum and it end up is Value Iteration
+- Between these two there is a spectrum wher k value can be 1
+
+
+# Asynchronous Dynamic Programming
 ![DP1024_27](https://user-images.githubusercontent.com/36159918/211876738-aae51361-f464-4799-830d-b58b0214bb77.jpg)
+- Do you need to update every single state in each swwep of the algo
+- Ans : No it would take more computational resources and you can pick any state and back of the that satate 
+
+# Asynchronous Dynamic Programming
 ![DP1024_28](https://user-images.githubusercontent.com/36159918/211876743-8d7f58a2-47ff-4e2f-8a00-ffb33fc18314.jpg)
+- These are the differnt method whihc will tell us that which state we had to pick
+
+# In-Place Dynamic Programming
 ![DP1024_29](https://user-images.githubusercontent.com/36159918/211876752-d0fd4b92-ca02-48c5-8adf-0a935ee41848.jpg)
+- Programming check
+- You have to store two value , the new value and the old value 
+- we are going to plug new value at any given time
+- The order eally matters
+
+-
+# Prioritised Sweeping
 ![DP1024_30](https://user-images.githubusercontent.com/36159918/211876758-8952553c-a610-4bd3-834a-041600f0d54f.jpg)
-![DP1024_31](https://user-images.githubusercontent.com/36159918/211876770-a56e7002-c471-4143-a497-624ea2460894.jpg)
+- Come with the measure that how important is to update any given satate?
+- which state you update first
+- we use the mangitude of the change to slect the state, for instacne afer one update the state value turn from zero to 1000  that going to affect my computation
+- we use them and order them 
+
+# Real-Time Dynamic Programming
+- ![DP1024_31](https://user-images.githubusercontent.com/36159918/211876770-a56e7002-c471-4143-a497-624ea2460894.jpg)
+- Slect the state which agent actually visit , and update state which sorrounding the agent
+
+# Full-Width Backups
 ![DP1024_32](https://user-images.githubusercontent.com/36159918/211876783-9fbedb9a-696b-4a8a-9e72-bdc66948ee1f.jpg)
+- we considereong the whole branching factor thats a very expensive process we need to known the dynamics ,  we solve that by sampling will see in future, sample on single trajectory
+
+# Sample Backups
 ![DP1024_33](https://user-images.githubusercontent.com/36159918/211876800-94eeecb3-aeb1-4932-9edd-0d9d17b57146.jpg)
+-  sample one action according to our policy
+# Approximate Dynamic Programming
 ![DP1024_34](https://user-images.githubusercontent.com/36159918/211876805-901ee4ae-d4cd-4fc1-ab73-25308a868005.jpg)
 ![DP1024_35](https://user-images.githubusercontent.com/36159918/211876813-4012556f-f5f0-429f-8745-4dcf89fcf0f5.jpg)
 ![DP1024_36](https://user-images.githubusercontent.com/36159918/211876819-fcb6c77e-051b-4eae-9454-ee7b030586d2.jpg)
