@@ -1300,12 +1300,15 @@ being greedy doesnet mean for only one action  it acount for teh all possilbe st
 - error term = (xk 􀀀 k􀀀1)
 -we update the mean in the direction of the  error
 # Incremental Monte-Carlo Updates
+
 ![MC-TD-10](https://user-images.githubusercontent.com/36159918/212911842-87f5873c-086b-4491-b67c-547392c3f51f.jpg)
+
 - epiosde by episdoe with out keep tracking of a sum
 - every time we see that setate we measure the return of the state from that ownwards and we look at trhe error betwen value the  function whihc we thought and the return that we actually obsereve  we generate some error we going to update the eman estimate for that state a little bit in teh direction of that return
 - every episode we update our mean
 - we have to wait till the end of the epiosde for the updaete thevalue , this is the one of the fow of the montecarlo, on way to deal is to forgert old episodes
 -  This applies to non stationery etsimate sratehr then taking true mean 
+-  
 ![MC-TD-11](https://user-images.githubusercontent.com/36159918/212911914-06abbaec-2552-4f56-8532-e8001cbef9ec.jpg)
 ![MC-TD-12](https://user-images.githubusercontent.com/36159918/212911930-717cdcda-dd01-472b-bf38-82152b317741.jpg)
 ![MC-TD-13](https://user-images.githubusercontent.com/36159918/212911963-9bd33bb6-72c5-419d-b080-378f40a2030c.jpg)
