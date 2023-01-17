@@ -1245,5 +1245,110 @@ being greedy doesnet mean for only one action  it acount for teh all possilbe st
 
 
 
+# Lecture 4
+# Outline
+![MC-TD-2](https://user-images.githubusercontent.com/36159918/212911651-f3b24283-912c-4f53-bed4-0577b2ae2860.jpg)
+- What does Model Free Prediction means that there is an enviroment that is respresented by Marko chain but MDP is not given
+
+
+# Model-Free Reinforcement Learning
+![MC-TD-3](https://user-images.githubusercontent.com/36159918/212911662-fe322ea3-8235-42d7-aae2-839b092d7631.jpg)
+- How to figure out the value function for unknown  MDP when some one give us the policy
+# Monte-Carlo Reinforcement Learning
+![MC-TD-4](https://user-images.githubusercontent.com/36159918/212911685-a731792f-cfff-4de6-b54a-a2c579b040fc.jpg)
+- very widely used in practice
+-  look at all complete episodes , just to take sample retuen on each sample , sample returns and average over them to get the value function
+- This only work with episodic scenarioos
+
+# Monte-Carlo Policy Evaluation
+![MC-TD-5](https://user-images.githubusercontent.com/36159918/212911721-4460a585-438c-4d52-92ff-9dcd5e21a3da.jpg)
+- v Pie is the value function , episdoes of teh experince from random actions
+- Gt is the reward at the end of episode 
+- estimate the value function by basicaly just taking the Expected retrun from Time t onwards if we set out state at a particular point
+- empirical mean= collect as  many sample for each of the state what ahppend from that point
+- issue  = The only issue is that the how we going to do this when are not going to set that point back to that repeatedly  and we want to figure it out for all      the state of the enviroment
+# First-Visit Monte-Carlo Policy Evaluation
+![MC-TD-6](https://user-images.githubusercontent.com/36159918/212911766-bf064600-8fd9-4ed1-9d10-3c064ba6abfd.jpg)
+ - Imagine you have some for loop in that MDP
+ - add up the return on every visiting the state
+ - and take mean of all returns
+ - If we see enough episodes from the random states the average will converge to the true value function provoded that each state is visited we generate the trajectory along the visiting teh policy
+ - Q if the states are to many will that tehre visiting go in form of exponentional
+  - Answer : No , beacuse we using teh central limit theory  1/n : sampling breaks the dependence on the size of the problem
+  - Q ; How can you make sure that you visit all states?
+  - just by following the policy Pie we gaurantee that we amke sure that visit all satate ,this is in the current conetxt but details will be given in next lecutures
+# Every-Visit Monte-Carlo Policy Evaluation
+- add on different value return on every visit
+
+# Blackjack Example
+![MC-TD-7](https://user-images.githubusercontent.com/36159918/212911787-64ac9c05-f86d-49e0-b2c8-79edd6a265b0.jpg)
+- if that is less than 12 we automatically twist
+
+# Blackjack Value Function after Monte-Carlo Learning
+![MC-TD-8](https://user-images.githubusercontent.com/36159918/212911807-e20f19d1-5aa0-4b0d-9659-5fd68c8b0c5e.jpg)
+- we going to applie naive policy
+- every visit monte carlo learning
+- play out game 10,00 hand
+- play out game 500,00 thousand
+- you dont see enough case where you get ace
+- no one told us any thing , just by running espiosed leraning through experiments
+
+# Incremental Mean
+![MC-TD-9](https://user-images.githubusercontent.com/36159918/212911829-61b8cdc7-0d4b-4a53-8cc4-3dbcede4b2da.jpg)
+- step by step update the mean
+- mean can be computed incrementally
+- error term = (xk 􀀀 k􀀀1)
+-we update the mean in the direction of the  error
+# Incremental Monte-Carlo Updates
+![MC-TD-10](https://user-images.githubusercontent.com/36159918/212911842-87f5873c-086b-4491-b67c-547392c3f51f.jpg)
+- epiosde by episdoe with out keep tracking of a sum
+- every time we see that setate we measure the return of the state from that ownwards and we look at trhe error betwen value the  function whihc we thought and the return that we actually obsereve  we generate some error we going to update the eman estimate for that state a little bit in teh direction of that return
+- every episode we update our mean
+- we have to wait till the end of the epiosde for the updaete thevalue , this is the one of the fow of the montecarlo, on way to deal is to forgert old episodes
+-  This applies to non stationery etsimate sratehr then taking true mean 
+![MC-TD-11](https://user-images.githubusercontent.com/36159918/212911914-06abbaec-2552-4f56-8532-e8001cbef9ec.jpg)
+![MC-TD-12](https://user-images.githubusercontent.com/36159918/212911930-717cdcda-dd01-472b-bf38-82152b317741.jpg)
+![MC-TD-13](https://user-images.githubusercontent.com/36159918/212911963-9bd33bb6-72c5-419d-b080-378f40a2030c.jpg)
+![MC-TD-14](https://user-images.githubusercontent.com/36159918/212911990-4702306e-d5b6-49ca-ae2b-e0762887f7be.jpg)
+![MC-TD-15](https://user-images.githubusercontent.com/36159918/212912003-49022df5-28ad-43dc-b34b-366469194a4b.jpg)
+![MC-TD-16](https://user-images.githubusercontent.com/36159918/212912031-d9c4b632-9bd4-43cf-b0c6-71b1251be5a1.jpg)
+![MC-TD-17](https://user-images.githubusercontent.com/36159918/212912057-b245d187-1a5c-4583-8fae-77d35f02f84f.jpg)
+![MC-TD-18](https://user-images.githubusercontent.com/36159918/212912071-02cc727a-e63c-47b7-bad4-8f3fdc11fcad.jpg)
+![MC-TD-19](https://user-images.githubusercontent.com/36159918/212912090-dc51d276-6db2-4702-9ed1-ad9ff31672bd.jpg)
+![MC-TD-20](https://user-images.githubusercontent.com/36159918/212912104-a8dde1fb-d98e-4697-b728-452c8d66efa4.jpg)
+![MC-TD-21](https://user-images.githubusercontent.com/36159918/212912123-863e7336-a8e5-40ac-833f-e464118f4483.jpg)
+![MC-TD-22](https://user-images.githubusercontent.com/36159918/212912132-48a214c2-8638-4628-9792-83b5105f5ce9.jpg)
+![MC-TD-23](https://user-images.githubusercontent.com/36159918/212912144-f11a2611-86a8-4659-895f-4f3c00d658d5.jpg)
+![MC-TD-24](https://user-images.githubusercontent.com/36159918/212912152-6a5eb764-d36c-4153-a308-32bde92e9105.jpg)
+![MC-TD-25](https://user-images.githubusercontent.com/36159918/212912174-b84eb834-f526-43ee-a8bd-dc80316ceab3.jpg)
+![MC-TD-26](https://user-images.githubusercontent.com/36159918/212912191-be3cf3d8-f3ba-4df0-9f78-674f7e63e6eb.jpg)
+![MC-TD-27](https://user-images.githubusercontent.com/36159918/212912204-103fad2e-68b1-4b49-aab1-22ef9f2d0ce9.jpg)
+![MC-TD-28](https://user-images.githubusercontent.com/36159918/212912215-4a90d856-b105-46ed-8f32-27713618091c.jpg)
+![MC-TD-29](https://user-images.githubusercontent.com/36159918/212912223-38d44241-b7fd-48c5-8d69-e4a2633b5ea7.jpg)
+![MC-TD-30](https://user-images.githubusercontent.com/36159918/212912239-60ab0927-a624-45e0-a99c-b615342816e4.jpg)
+![MC-TD-31](https://user-images.githubusercontent.com/36159918/212912257-91f0c9cb-8370-4502-be9c-d801dfa84b25.jpg)
+![MC-TD-32](https://user-images.githubusercontent.com/36159918/212912269-f9331f23-49e3-4b84-8f3b-aaab2ef56d9a.jpg)
+![MC-TD-33](https://user-images.githubusercontent.com/36159918/212912277-9d9ec8d0-2fa7-4bbe-9680-f4f247fc04f7.jpg)
+![MC-TD-34](https://user-images.githubusercontent.com/36159918/212912290-e394b954-462f-4ab9-8bd5-6011fed8da14.jpg)
+![MC-TD-35](https://user-images.githubusercontent.com/36159918/212912311-bd6e4d63-c9bc-4210-8b50-ca58b1f1fac9.jpg)
+![MC-TD-36](https://user-images.githubusercontent.com/36159918/212912327-e6c231bb-760b-4404-89d7-d9b7b657ded1.jpg)
+![MC-TD-37](https://user-images.githubusercontent.com/36159918/212912344-43b9c332-d82b-4544-9287-098235b3fbaa.jpg)
+![MC-TD-38](https://user-images.githubusercontent.com/36159918/212912356-cbcc9263-98d0-421c-ab6f-13161afdb803.jpg)
+![MC-TD-39](https://user-images.githubusercontent.com/36159918/212912377-e9911571-1c4d-4ad7-8baf-36751027782b.jpg)
+![MC-TD-40](https://user-images.githubusercontent.com/36159918/212912394-5d4ca770-0a52-44a9-a381-13132d558219.jpg)
+![MC-TD-41](https://user-images.githubusercontent.com/36159918/212912417-14d25752-f3ad-43dd-8fe0-c359687048ae.jpg)
+![MC-TD-42](https://user-images.githubusercontent.com/36159918/212912425-e6812b39-a495-477b-8213-84a3fae1046f.jpg)
+![MC-TD-43](https://user-images.githubusercontent.com/36159918/212912429-d543b857-7a47-4f5b-8d6e-3c6278b985ae.jpg)
+![MC-TD-44](https://user-images.githubusercontent.com/36159918/212912456-6b5b111f-5d50-4cac-9d5f-adcc58cc36c3.jpg)
+![MC-TD-45](https://user-images.githubusercontent.com/36159918/212912474-8b3f5bdf-ea62-4e86-8174-78b37420f25e.jpg)
+![MC-TD-46](https://user-images.githubusercontent.com/36159918/212912493-294e3f09-5590-4a0a-9a12-968d5f4a762f.jpg)
+![MC-TD-47](https://user-images.githubusercontent.com/36159918/212912522-b7fcd54b-f3e3-400c-9863-4e4743e33f0e.jpg)
+![MC-TD-48](https://user-images.githubusercontent.com/36159918/212912567-b6a42068-52fd-43ec-9750-03fa4b69c355.jpg)
+![MC-TD-49](https://user-images.githubusercontent.com/36159918/212912621-47dc4d83-1372-484b-bfa9-971d62208d6a.jpg)
+![MC-TD-50](https://user-images.githubusercontent.com/36159918/212912641-b5be5674-a62d-454d-9d78-c9894c671acd.jpg)
+![MC-TD-51](https://user-images.githubusercontent.com/36159918/212912653-6f1f9855-2aa4-4d04-8434-66564079ee9e.jpg)
+
+
+
 
 
